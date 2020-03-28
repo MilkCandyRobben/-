@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace 文献管理系统
 {
-    public partial class 文献管理系统 : Form
+    public partial class MainForm : Form
     {
-        public 文献管理系统()
+        public MainForm()
         {
             InitializeComponent();
             customizeDesign();

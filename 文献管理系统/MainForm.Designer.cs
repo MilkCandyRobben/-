@@ -1,6 +1,6 @@
 namespace 文献管理系统
 {
-    partial class 文献管理系统
+    partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,7 @@ namespace 文献管理系统
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(文献管理系统));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.侧边菜单栏panel = new System.Windows.Forms.Panel();
             this.子菜单panel = new System.Windows.Forms.Panel();
             this.作者统计按钮 = new System.Windows.Forms.Button();
@@ -151,7 +151,7 @@ namespace 文献管理系统
             this.图标panel.Size = new System.Drawing.Size(250, 100);
             this.图标panel.TabIndex = 0;
             // 
-            // 文献管理系统
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,7 +161,7 @@ namespace 文献管理系统
             this.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(950, 600);
-            this.Name = "文献管理系统";
+            this.Name = "MainForm";
             this.Text = "文献管理系统";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.侧边菜单栏panel.ResumeLayout(false);

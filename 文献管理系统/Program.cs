@@ -16,7 +16,12 @@ namespace 文献管理系统
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new 文献管理系统());
+            //Application.Run(new MainForm());
+            OpeningForm frm = new OpeningForm();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new MainForm());
+            }
         }
     }
 }

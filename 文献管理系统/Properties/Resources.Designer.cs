@@ -63,6 +63,16 @@ namespace 文献管理系统.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap opening {
+            get {
+                object obj = ResourceManager.GetObject("opening", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 三角下标 {
             get {
                 object obj = ResourceManager.GetObject("三角下标", resourceCulture);
