@@ -92,5 +92,14 @@
   <ItemGroup>
     <None Include="Resources\三角下标1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\搜索large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\统计.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\收藏文献管理_画板 1 副本 9.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
