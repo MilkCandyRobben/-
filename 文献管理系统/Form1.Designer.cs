@@ -129,7 +129,7 @@
             this.工具按钮.FlatAppearance.BorderSize = 0;
             this.工具按钮.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.工具按钮.ForeColor = System.Drawing.Color.Gainsboro;
-            this.工具按钮.Image = ((System.Drawing.Image)(resources.GetObject("工具按钮.Image")));
+            this.工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标;
             this.工具按钮.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.工具按钮.Location = new System.Drawing.Point(0, 100);
             this.工具按钮.Name = "工具按钮";
