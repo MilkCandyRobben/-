@@ -33,7 +33,7 @@ namespace 文献管理系统
         {
             if (子菜单panel.Visible == false)
             {
-                hideSubMenu();
+               // hideSubMenu();
                 subMenu.Visible = true;
             }
             else
@@ -44,10 +44,24 @@ namespace 文献管理系统
         {
 
         }
-
+         bool a = true;
         private void 工具按钮_Click(object sender, EventArgs e)
         {
             showSubMenu(子菜单panel);
+            
+            if (a==true)
+            { 
+                工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标1;
+                a = false;
+            }
+            else 
+            {
+                工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标;
+                a = true;
+            }
+
+            
+
         }
 
         private void button1_Click(object sender, EventArgs e)

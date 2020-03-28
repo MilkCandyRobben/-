@@ -71,6 +71,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -84,6 +85,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\三角下标.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\三角下标1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\搜索large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\统计.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\收藏文献管理_画板 1 副本 9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
