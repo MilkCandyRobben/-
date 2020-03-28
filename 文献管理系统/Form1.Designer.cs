@@ -1,4 +1,4 @@
-﻿namespace 文献管理系统
+namespace 文献管理系统
 {
     partial class 文献管理系统
     {
@@ -33,7 +33,7 @@
             this.子菜单panel = new System.Windows.Forms.Panel();
             this.作者统计按钮 = new System.Windows.Forms.Button();
             this.相关搜索按钮 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.搜索按钮 = new System.Windows.Forms.Button();
             this.工具按钮 = new System.Windows.Forms.Button();
             this.图标panel = new System.Windows.Forms.Panel();
             this.侧边菜单栏panel.SuspendLayout();
@@ -58,7 +58,7 @@
             this.子菜单panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.子菜单panel.Controls.Add(this.作者统计按钮);
             this.子菜单panel.Controls.Add(this.相关搜索按钮);
-            this.子菜单panel.Controls.Add(this.button1);
+            this.子菜单panel.Controls.Add(this.搜索按钮);
             this.子菜单panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.子菜单panel.Location = new System.Drawing.Point(0, 145);
             this.子菜单panel.Name = "子菜单panel";
@@ -103,24 +103,24 @@
             this.相关搜索按钮.UseVisualStyleBackColor = true;
             this.相关搜索按钮.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // 搜索按钮
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(250, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "搜索";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.搜索按钮.Dock = System.Windows.Forms.DockStyle.Top;
+            this.搜索按钮.FlatAppearance.BorderSize = 0;
+            this.搜索按钮.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.搜索按钮.ForeColor = System.Drawing.Color.LightGray;
+            this.搜索按钮.Image = ((System.Drawing.Image)(resources.GetObject("搜索按钮.Image")));
+            this.搜索按钮.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.搜索按钮.Location = new System.Drawing.Point(0, 0);
+            this.搜索按钮.Name = "搜索按钮";
+            this.搜索按钮.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.搜索按钮.Size = new System.Drawing.Size(250, 40);
+            this.搜索按钮.TabIndex = 0;
+            this.搜索按钮.Text = "搜索";
+            this.搜索按钮.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.搜索按钮.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.搜索按钮.UseVisualStyleBackColor = true;
+            this.搜索按钮.Click += new System.EventHandler(this.button1_Click);
             // 
             // 工具按钮
             // 
@@ -176,7 +176,7 @@
         private System.Windows.Forms.Panel 子菜单panel;
         private System.Windows.Forms.Button 作者统计按钮;
         private System.Windows.Forms.Button 相关搜索按钮;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button 搜索按钮;
         private System.Windows.Forms.Button 工具按钮;
         private System.Windows.Forms.Panel 图标panel;
     }
