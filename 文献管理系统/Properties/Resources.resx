@@ -118,13 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="三角下标" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\三角下标.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="统计" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\统计.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="三角下标1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\三角下标1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="搜索large" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\搜索large.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="三角下标向下" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\三角下标向下.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="三角下标1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\三角下标1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="三角下标" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\三角下标.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="收藏文献管理_画板 1 副本 9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\收藏文献管理_画板 1 副本 9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

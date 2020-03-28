@@ -71,7 +71,7 @@
             this.作者统计按钮.FlatAppearance.BorderSize = 0;
             this.作者统计按钮.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.作者统计按钮.ForeColor = System.Drawing.Color.LightGray;
-            this.作者统计按钮.Image = ((System.Drawing.Image)(resources.GetObject("作者统计按钮.Image")));
+            this.作者统计按钮.Image = global::文献管理系统.Properties.Resources.统计;
             this.作者统计按钮.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.作者统计按钮.Location = new System.Drawing.Point(0, 80);
             this.作者统计按钮.Name = "作者统计按钮";
@@ -90,7 +90,7 @@
             this.相关搜索按钮.FlatAppearance.BorderSize = 0;
             this.相关搜索按钮.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.相关搜索按钮.ForeColor = System.Drawing.Color.LightGray;
-            this.相关搜索按钮.Image = ((System.Drawing.Image)(resources.GetObject("相关搜索按钮.Image")));
+            this.相关搜索按钮.Image = global::文献管理系统.Properties.Resources.搜索large;
             this.相关搜索按钮.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.相关搜索按钮.Location = new System.Drawing.Point(0, 40);
             this.相关搜索按钮.Name = "相关搜索按钮";
@@ -109,7 +109,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Image = global::文献管理系统.Properties.Resources.搜索large;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
@@ -143,7 +143,7 @@
             // 
             // 图标panel
             // 
-            this.图标panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("图标panel.BackgroundImage")));
+            this.图标panel.BackgroundImage = global::文献管理系统.Properties.Resources.收藏文献管理_画板_1_副本_9;
             this.图标panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.图标panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.图标panel.Location = new System.Drawing.Point(0, 0);
