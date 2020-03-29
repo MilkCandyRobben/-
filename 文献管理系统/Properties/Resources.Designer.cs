@@ -73,9 +73,9 @@ namespace 文献管理系统.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 三角下标 {
+        internal static System.Drawing.Bitmap 三角下标down {
             get {
-                object obj = ResourceManager.GetObject("三角下标", resourceCulture);
+                object obj = ResourceManager.GetObject("三角下标down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace 文献管理系统.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 三角下标1 {
+        internal static System.Drawing.Bitmap 三角下标left {
             get {
-                object obj = ResourceManager.GetObject("三角下标1", resourceCulture);
+                object obj = ResourceManager.GetObject("三角下标left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace 文献管理系统.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 三角下标向下 {
+        internal static System.Drawing.Bitmap 搜索 {
             get {
-                object obj = ResourceManager.GetObject("三角下标向下", resourceCulture);
+                object obj = ResourceManager.GetObject("搜索", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,19 +103,9 @@ namespace 文献管理系统.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 搜索large {
+        internal static System.Drawing.Bitmap 文献管理 {
             get {
-                object obj = ResourceManager.GetObject("搜索large", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 收藏文献管理_画板_1_副本_9 {
-            get {
-                object obj = ResourceManager.GetObject("收藏文献管理_画板 1 副本 9", resourceCulture);
+                object obj = ResourceManager.GetObject("文献管理", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

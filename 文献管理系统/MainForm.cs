@@ -51,12 +51,12 @@ namespace 文献管理系统
             
             if (a==true)
             { 
-                工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标1;
+                工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标down;
                 a = false;
             }
             else 
             {
-                工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标;
+                工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
                 a = true;
             }
 

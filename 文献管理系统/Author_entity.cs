@@ -33,7 +33,7 @@ namespace 文献管理系统
     class Author_entity
     {
         public string name { set; get; }//作者名称(重要)
-        public List<string> articles { set; get; }//所著文章列表(重要)
+        public List<string> literatures { set; get; }//所著文献列表(重要)
         public List<string> collaborators { set; get; }//合作者列表(也许有用)
 
         /// <summary>
@@ -42,32 +42,32 @@ namespace 文献管理系统
         /// <param name="name">作者名称</param>
         /// <param name="articles">文章名称列表</param>
         /// <param name="collaborators">合作者名称列表</param>
-        public Author_entity(string name, List<string> articles, List<string> collaborators = null)
+        public Author_entity(string name, List<string> literatures, List<string> collaborators = null)
         {
             this.name = name;
-            this.articles = articles;
-            this.collaborators = articles;
+            this.literatures = literatures;
+            this.collaborators = collaborators;
         }
 
         /// <summary>
         /// 为作者添加文章,添加1个/多个
         /// </summary>
-        public void addArticle(string article)
+        public void addArticle(string literature)
         {
-            if (articles == null)
+            if (literatures == null)
             {
-                articles = new List<string>();
+                literatures = new List<string>();
             }
-            this.articles.Add(article);
-            this.articles = this.articles.Distinct().ToList();//Distinct去重
+            this.literatures.Add(literature);
+            this.literatures = this.literatures.Distinct().ToList();//Distinct去重
         }
-        public void addArticles(List<string> articles)
+        public void addArticles(List<string> literatures)
         {
-            this.articles.Union(articles);//Union取并集,去重
+            this.literatures.Union(literatures);//Union取并集,去重
         }
-        public void addArticles(string[] articles)
+        public void addArticles(string[] literatures)
         {
-            this.articles.Union(new List<string>(articles));//Union取并集,去重
+            this.literatures.Union(new List<string>(literatures));//Union取并集,去重
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace 文献管理系统
         /// <returns></returns>
         int getArticleCount()
         {
-            return this.articles.Count();
+            return this.literatures.Count();
         }
 
         /// <summary>
@@ -105,11 +105,11 @@ namespace 文献管理系统
         /// </summary>
         /// <param name="article">作者名</param>
         /// <returns></returns>
-        bool isAuthorExist(string article)
+        bool isAuthorExist(string literature)
         {
-            foreach (var i in this.articles)
+            foreach (var i in this.literatures)
             {
-                if (i.ToString().Equals(article))
+                if (i.ToString().Equals(literature))
                 {
                     return true;
                 }
@@ -123,10 +123,10 @@ namespace 文献管理系统
         /// <param name="name">作者名称</param>
         /// <param name="articles">文章名称列表</param>
         /// <param name="collaborators">合作者名称列表</param>
-        public void pkgModule(out string name, out List<string> articles, out List<string> collaborators)
+        public void pkgModule(out string name, out List<string> literatures, out List<string> collaborators)
         {
             name = this.name;
-            articles = this.articles;
+            literatures = this.literatures;
             collaborators = this.collaborators;
         }
     }
