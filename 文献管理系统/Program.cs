@@ -20,7 +20,7 @@ namespace 文献管理系统
             OpeningForm frm = new OpeningForm();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new MainForm());
+                Application.Run(new MainForm2());
             }
         }
     }

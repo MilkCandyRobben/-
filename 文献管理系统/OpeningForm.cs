@@ -19,7 +19,7 @@ namespace 文献管理系统
 
         private void timerProgressbar_Tick(object sender, EventArgs e)
         {
-            panelProgressbar.Width += (new Random()).Next(1, 10);
+            panelProgressbar.Width += (new Random()).Next(50, 100);
             if (panelProgressbar.Width >= 700)
             {
                 timerProgressbar.Stop();
