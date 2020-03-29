@@ -46,9 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article_entity.cs" />
+    <Compile Include="Literature_entity.cs" />
     <Compile Include="Author_entity.cs" />
-    <Compile Include="Book_enity.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
