@@ -13,7 +13,8 @@ namespace 文献管理系统
     {
         public string filePath = "E:\\dblp_index.xml";
         public List<string> Infomation { set; get; }
-        public List<string> getInfomation(string []index) {
+        public List<string> getInfomation(string[] indexGroup)
+        {
             //XmlReaderSettings解决dtd约束权限问题 加入这三句就能够解决
             //ValidationCallBack记得要Override
             XmlReaderSettings settings = new XmlReaderSettings();
@@ -26,7 +27,15 @@ namespace 文献管理系统
             {
                 Infomation = new List<string>();
             }
-            
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element)
+                {
+
+                }
+            }
+
 
             return Infomation;
 

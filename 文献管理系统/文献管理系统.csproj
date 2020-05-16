@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchByIndex_xml.cs" />
     <Compile Include="作者姓名窗口.cs">
       <SubType>Form</SubType>
     </Compile>
