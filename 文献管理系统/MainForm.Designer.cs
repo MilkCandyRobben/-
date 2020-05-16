@@ -155,11 +155,11 @@ namespace 文献管理系统
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(932, 553);
             this.Controls.Add(this.侧边菜单栏panel);
             this.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "MainForm";
             this.Text = "文献管理系统";

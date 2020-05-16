@@ -66,6 +66,9 @@ namespace 文献管理系统
 
         private void button1_Click(object sender, EventArgs e)
         {
+            基本搜索窗口 form = new 基本搜索窗口();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Show();
             hideSubMenu();
         }
 
