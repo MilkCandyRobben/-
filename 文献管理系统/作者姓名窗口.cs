@@ -16,5 +16,13 @@ namespace 文献管理系统
         {
             InitializeComponent();
         }
+
+        private void 作者姓名窗口_Load(object sender, EventArgs e)
+        {
+
+
+
+
+        }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -47,14 +47,12 @@
             this.panel2.Size = new System.Drawing.Size(382, 92);
             this.panel2.TabIndex = 1;
             // 
-            // panel3
+            // textBox1
             // 
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 92);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(382, 75);
-            this.panel3.TabIndex = 2;
+            this.textBox1.Location = new System.Drawing.Point(187, 41);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(158, 25);
+            this.textBox1.TabIndex = 1;
             // 
             // label1
             // 
@@ -65,12 +63,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "请输入作者姓名：";
             // 
-            // textBox1
+            // panel3
             // 
-            this.textBox1.Location = new System.Drawing.Point(187, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 25);
-            this.textBox1.TabIndex = 1;
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 92);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(382, 75);
+            this.panel3.TabIndex = 2;
             // 
             // button1
             // 
@@ -90,6 +90,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "作者姓名窗口";
             this.Text = "作者姓名窗口";
+            this.Load += new System.EventHandler(this.作者姓名窗口_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
