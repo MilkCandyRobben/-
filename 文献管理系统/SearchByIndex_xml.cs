@@ -132,13 +132,12 @@ namespace 文献管理系统
                                     }
                                     break;
                             }
+                            break;
                         }
                     }
                 }
             }
             reader.Close();
-
-
             return Infomation;
 
         }
