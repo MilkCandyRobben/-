@@ -7,14 +7,28 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Data;
 using System.Drawing;
+using System.IO;
+
 namespace 文献管理系统
 {
     class SearchByIndex_xml
     {
-        public string filePath = "E:\\dblp_index.xml";
-        public List<string> Infomation { set; get; }
-        public List<string> getInfomation(string[] indexGroup)
+        
+
+        //public List<string> Infomation { set; get; }//author Tom+":"
+        //public void clearInfo()
+        //{
+        //    this.Infomation.Clear();
+        //}
+
+        public FileStream fs_out;
+        public StreamWriter sw;
+       
+        
+        public bool getInfomation(string[] indexGroup,string filePath,string outputPath)
         {
+            fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
+            sw = new StreamWriter(fs_out);
             //XmlReaderSettings解决dtd约束权限问题 加入这三句就能够解决
             //ValidationCallBack记得要Override
             XmlReaderSettings settings = new XmlReaderSettings();
@@ -23,10 +37,10 @@ namespace 文献管理系统
             settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
             //reader的create函数也需要加入settings设置 
             XmlReader reader = XmlReader.Create(filePath, settings);
-            if (Infomation == null)
-            {
-                Infomation = new List<string>();
-            }
+            //if (Infomation == null)
+            //{
+            //    Infomation = new List<string>();
+            //}
 
             foreach (string index in indexGroup) {
                 while (reader.Read())
@@ -40,7 +54,7 @@ namespace 文献管理系统
                             //此处属于投机取巧 因为author journal标签是字标签 
                             //当遍历到最后一位时 遇到article或者inproceedings等大标签即停止
                             //搜索花的时间最长为1分钟
-                            switch (reader.Name)
+                            switch (reader.Name)//article inproceeding incollection
                             {
                                 case "article":
                                     reader.MoveToElement();//跳过空白节点 免得影响条件判断
@@ -50,8 +64,8 @@ namespace 文献管理系统
                                         reader.MoveToContent();
                                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "volume" || reader.Name == "ee" || reader.Name == "isbn" || reader.Name == "url" || reader.Name == "journal" || reader.Name == "month" || reader.Name == "year" || reader.Name == "title" || reader.Name == "publisher"))
                                         {
-                                            this.Infomation.Add(reader.Name);
-                                            this.Infomation.Add(reader.ReadInnerXml());
+
+                                            sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
 
                                         }
                                         else
@@ -65,8 +79,7 @@ namespace 文献管理系统
                                         reader.MoveToContent();
                                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "year" || reader.Name == "series" || reader.Name == "publisher" || reader.Name == "isbn" || reader.Name == "ee"))
                                         {
-                                            this.Infomation.Add(reader.Name);
-                                            this.Infomation.Add(reader.ReadInnerXml());
+                                            sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
 
                                         }
                                         else
@@ -81,8 +94,7 @@ namespace 文献管理系统
                                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" || reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
                                         {
 
-                                            this.Infomation.Add(reader.Name);
-                                            this.Infomation.Add(reader.ReadInnerXml());
+                                            sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
 
                                         }
                                         else
@@ -97,8 +109,7 @@ namespace 文献管理系统
                                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" || reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
                                         {
 
-                                            this.Infomation.Add(reader.Name);
-                                            this.Infomation.Add(reader.ReadInnerXml());
+                                            sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
 
                                         }
                                         else
@@ -113,8 +124,7 @@ namespace 文献管理系统
                                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "volume" || reader.Name == "editor" || reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" || reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
                                         {
 
-                                            this.Infomation.Add(reader.Name);
-                                            this.Infomation.Add(reader.ReadInnerXml());
+                                            sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
 
                                         }
                                         else
@@ -129,8 +139,7 @@ namespace 文献管理系统
                                         reader.MoveToContent();
                                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "year" || reader.Name == "school" || reader.Name == "pages" || reader.Name == "publisher" || reader.Name == "series" || reader.Name == "volume" || reader.Name == "isbn" || reader.Name == "ee"))
                                         {
-                                            this.Infomation.Add(reader.Name);
-                                            this.Infomation.Add(reader.ReadInnerXml());
+                                            sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
 
                                         }
                                         else
@@ -138,6 +147,7 @@ namespace 文献管理系统
                                     }
                                     break;
                             }
+                            sw.Write('\n');
                             break;
                             //这个break是为了避免reader停不下来知道最后一行
                         }
@@ -145,8 +155,9 @@ namespace 文献管理系统
                 }
             }
             reader.Close();
-            return Infomation;
-
+            sw.Close();
+            // return Infomation;
+            return true;
         }
         private static void ValidationCallBack(object sender, ValidationEventArgs e)
         {
