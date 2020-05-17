@@ -1,0 +1,795 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
+
+public class Consts
+{
+    public const int M = 100;                  // B树的最小度数
+    public const int KeyMax = 2 * M - 1;     // 节点包含关键字的最大个数
+    public const int KeyMin = M - 1;         // 非根节点包含关键字的最小个数
+    public const int ChildMax = KeyMax + 1;  // 孩子节点的最大个数
+    public const int ChildMin = KeyMin + 1;  // 孩子节点的最小个数
+}
+
+public class Statics
+{
+    public static int nowIndex = 1;
+    public static StreamWriter authorBTreeSW = null;
+}
+
+public class BTreeNode
+{
+    private bool leaf;
+    public KeyValuePair<string, List<string>>[] keys;
+    public int keyNumber;
+    public BTreeNode[] children;
+    public int nodeIndex;
+    public int nodeRows;
+
+
+    public BTreeNode(bool leaf)
+    {
+        this.leaf = leaf;
+        keys = new KeyValuePair<string, List<string>>[Consts.KeyMax];
+        children = new BTreeNode[Consts.ChildMax];
+    }
+
+    /// <summary>在未满的节点中插入键值</summary>
+    /// <param name="key">键值</param>
+    public void InsertNonFull(KeyValuePair<string, List<string>> key)
+    {
+        var index = keyNumber - 1;
+
+        if (leaf == true)
+        {
+            // 找到合适位置,并且移动节点键值腾出位置
+            while (index >= 0 && String.Compare(keys[index].Key, key.Key) == 1)
+            {
+                keys[index + 1] = keys[index];
+                index--;
+            }
+
+            // 在index后边新增键值
+            keys[index + 1] = key;
+            keyNumber = keyNumber + 1;
+        }
+        else
+        {
+            // 找到合适的子孩子索引
+            while (index >= 0 && String.Compare(keys[index].Key, key.Key) == 1) index--;
+
+            // 如果孩子节点已满
+            if (children[index + 1].keyNumber == Consts.KeyMax)
+            {
+                // 分裂该孩子节点
+                SplitChild(index + 1, children[index + 1]);
+
+                // 分裂后中间节点上跳父节点
+                // 孩子节点已经分裂成2个节点,找到合适的一个
+                if (String.Compare(keys[index + 1].Key, key.Key) == -1) index++;
+            }
+
+            // 插入键值
+            children[index + 1].InsertNonFull(key);
+        }
+    }
+
+    /// <summary>分裂节点</summary>
+    /// <param name="childIndex">孩子节点索引</param>
+    /// <param name="waitSplitNode">待分裂节点</param>
+    public void SplitChild(int childIndex, BTreeNode waitSplitNode)
+    {
+        var newNode = new BTreeNode(waitSplitNode.leaf);
+        newNode.keyNumber = Consts.KeyMin;
+
+        // 把待分裂的节点中的一般节点搬到新节点
+        for (var j = 0; j < Consts.KeyMin; j++)
+        {
+            newNode.keys[j] = waitSplitNode.keys[j + Consts.ChildMin];
+
+            // 清0
+            waitSplitNode.keys[j + Consts.ChildMin] = new KeyValuePair<string, List<string>>(null, null);
+        }
+
+        // 如果待分裂节点不是也只节点
+        if (waitSplitNode.leaf == false)
+        {
+            for (var j = 0; j < Consts.ChildMin; j++)
+            {
+                // 把孩子节点也搬过去
+                newNode.children[j] = waitSplitNode.children[j + Consts.ChildMin];
+
+                // 清0
+                waitSplitNode.children[j + Consts.ChildMin] = null;
+            }
+        }
+
+        waitSplitNode.keyNumber = Consts.KeyMin;
+
+        // 拷贝一般键值到新节点
+        for (var j = keyNumber; j >= childIndex + 1; j--)
+            children[j + 1] = children[j];
+
+        children[childIndex + 1] = newNode;
+        for (var j = keyNumber - 1; j >= childIndex; j--)
+            keys[j + 1] = keys[j];
+
+        // 把中间键值上跳至父节点
+        keys[childIndex] = waitSplitNode.keys[Consts.KeyMin];
+
+        // 清0
+        waitSplitNode.keys[Consts.KeyMin] = new KeyValuePair<string, List<string>>(null, null);
+
+        // 根节点键值数自加
+        keyNumber = keyNumber + 1;
+    }
+
+    /// <summary>根据节点索引顺序打印节点键值</summary>
+    public void PrintByKey()
+    {
+        int index;
+        Console.WriteLine(keyNumber.ToString());
+        for (index = 0; index < keyNumber; index++)
+        {
+            // 如果不是叶子节点, 先打印叶子子节点. 
+            if (leaf == false) children[index].PrintByKey();
+
+            Console.WriteLine(keys[index].Key);
+        }
+
+        // 打印孩子节点
+        if (leaf == false) children[index].PrintByKey();
+    }
+
+    public void InitialNodeIndex()
+    {
+        nodeIndex = Statics.nowIndex;
+        nodeRows++;
+        for (int i = 0; i < keyNumber; i++)
+        {
+            nodeRows = nodeRows + keys[i].Value.Count + 1;
+        }
+        if (leaf)
+        {
+            nodeRows++;
+        }
+        else
+        {
+            nodeRows = nodeRows + keyNumber + 1;
+        }
+        Statics.nowIndex += nodeRows;
+        if (leaf)
+            return;
+        for (int i = 0; i <= keyNumber; i++)
+        {
+            children[i].InitialNodeIndex();
+        }
+    }
+
+    public void SaveNode()
+    {
+        Statics.authorBTreeSW.Write(nodeRows.ToString() + "/" + keyNumber.ToString() + "/" + (leaf ? "1" : "0") + "\n");
+        for (int i = 0; i < keyNumber; i++)
+        {
+            Statics.authorBTreeSW.Write(keys[i].Key + "/" + keys[i].Value.Count.ToString() + "\n");
+            for (int j = 0; j < keys[i].Value.Count; j++)
+            {
+                Statics.authorBTreeSW.Write(keys[i].Value[j] + "\n");
+            }
+        }
+
+        if (leaf)
+        {
+            Statics.authorBTreeSW.Write("noChild\n");
+        }
+        else
+        {
+            for (int i = 0; i <= keyNumber; i++)
+            {
+                Statics.authorBTreeSW.Write(children[i].nodeIndex.ToString() + "\n");
+            }
+        }
+
+        if (leaf)
+            return;
+        for (int i = 0; i <= keyNumber; i++)
+        {
+            children[i].SaveNode();
+        }
+    }
+
+    /// <summary>查找某键值是否已经存在树中</summary>
+    /// <param name="key">键值</param>
+    /// <returns></returns>
+    public BTreeNode Find(string key)
+    {
+        int index = 0;
+        while (index < keyNumber && String.Compare(key, keys[index].Key) == 1) index++;
+
+        // 该key已经存在, 返回该索引位置节点
+        if (String.Compare(keys[index].Key, key) == 0) return this;
+
+        // key 不存在,并且节点是叶子节点
+        if (leaf == true) return null;
+
+        // 递归在孩子节点中查找
+        return children[index].Find(key);
+    }
+}
+
+public class BTree
+{
+    public BTreeNode Root { get; private set; }
+
+    public BTree() { }
+
+    /// <summary>根据节点索引顺序打印节点键值</summary>
+    public void PrintByKey()
+    {
+        if (Root == null)
+        {
+            Console.WriteLine("空树");
+            return;
+        }
+
+        Root.PrintByKey();
+    }
+
+    public void InitialNodeIndex()
+    {
+        if (Root == null)
+        {
+            Console.WriteLine("空树");
+            return;
+        }
+        Statics.nowIndex = 1;
+        Root.InitialNodeIndex();
+    }
+
+    public void SaveBTree(string filePath)
+    {
+        if (Root == null)
+        {
+            Console.WriteLine("空树");
+            return;
+        }
+        Statics.authorBTreeSW = new StreamWriter(new FileStream(filePath, FileMode.Append, FileAccess.Write));
+        Root.SaveNode();
+        Statics.authorBTreeSW.Close();
+    }
+
+    /// <summary>查找某键值是否已经存在树中</summary>
+    /// <param name="key">键值</param>
+    /// <returns></returns>
+    public BTreeNode Find(string key)
+    {
+        if (Root == null) return null;
+
+        return Root.Find(key);
+    }
+
+    /// <summary>新增B树节点键值</summary>
+    /// <param name="key">键值</param>
+    public void Insert(KeyValuePair<string, List<string>> key)
+    {
+        if (Root == null)
+        {
+            Root = new BTreeNode(true);
+            Root.keys[0] = key;
+            Root.keyNumber = 1;
+            return;
+        }
+
+        if (Root.keyNumber == Consts.KeyMax)
+        {
+            var newNode = new BTreeNode(false);
+
+            newNode.children[0] = Root;
+            newNode.SplitChild(0, Root);
+
+            var index = 0;
+            if (String.Compare(newNode.keys[0].Key, key.Key) == -1) index++;
+
+            newNode.children[index].InsertNonFull(key);
+            Root = newNode;
+        }
+        else
+        {
+            Root.InsertNonFull(key);
+        }
+    }
+}
+
+public class MinHeap
+{
+    public KeyValuePair<string, int>[] heap;
+    public int count;
+    public MinHeap()
+    {
+        heap = new KeyValuePair<string, int>[100];
+        for (int i = 0; i < 100; i++)
+        {
+            heap[i] = new KeyValuePair<string, int>("", 0);
+        }
+        count = 0;
+    }
+    public void insert(KeyValuePair<string, int> kvp)
+    {
+        if (count < 100)
+        {
+            heap[count] = kvp;
+            siftUp(count);
+            count++;
+        }
+        else
+        {
+            if (kvp.Value > heap[0].Value)
+            {
+                heap[0] = kvp;
+                siftDown(0);
+            }
+        }
+    }
+
+    public void siftUp(int index)
+    {
+        while (index > 0)
+        {
+            if (heap[(index - 1) / 2].Value > heap[index].Value)
+            {
+                KeyValuePair<string, int> temp = heap[(index - 1) / 2];
+                heap[(index - 1) / 2] = heap[index];
+                heap[index] = temp;
+                index = (index - 1) / 2;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    public void siftDown(int index)
+    {
+        bool flag = true;
+        while (flag)
+        {
+            if (2 * index + 2 < count)
+            {
+                if (heap[2 * index + 1].Value < heap[2 * index + 2].Value)
+                {
+                    if (heap[index].Value > heap[2 * index + 1].Value)
+                    {
+                        KeyValuePair<string, int> temp = heap[2 * index + 1];
+                        heap[2 * index + 1] = heap[index];
+                        heap[index] = temp;
+                        index = 2 * index + 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (heap[index].Value > heap[2 * index + 2].Value)
+                    {
+                        KeyValuePair<string, int> temp = heap[2 * index + 2];
+                        heap[2 * index + 2] = heap[index];
+                        heap[index] = temp;
+                        index = 2 * index + 2;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+            }
+            else if (2 * index + 2 == count)
+            {
+                if (heap[index].Value > heap[2 * index + 1].Value)
+                {
+                    KeyValuePair<string, int> temp = heap[2 * index + 1];
+                    heap[2 * index + 1] = heap[index];
+                    heap[index] = temp;
+                }
+                break;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+    }
+
+}
+class PreprocessingUtils
+{
+    public Dictionary<string, List<string>> authorIndexDic;
+    public Dictionary<string, List<string>> keywordIndexDic;
+    /// <summary>
+    /// 文件格式化
+    /// </summary>
+    public void fileFormatting()
+    {
+        FileStream fs_in = new FileStream(@"D:\dataxml\dblp10.xml", FileMode.Open, FileAccess.Read);
+        StreamReader sr = new StreamReader(fs_in);
+        FileStream fs_out = new FileStream(@"D:\dataxml\dblp_index.xml", FileMode.Append, FileAccess.Write);
+        StreamWriter sw = new StreamWriter(fs_out);
+        int i = 0;
+        StringBuilder temp;
+        string line;
+        do
+        {
+
+            line = sr.ReadLine();
+            if (line == "\n" || line == "") continue;
+            if (line == null) break;
+            temp = new StringBuilder(line);
+            i++;
+            temp.Replace(@"<article", "<article index=\"" + i.ToString() + "\"");
+            temp.Replace(@"<book ", "<book index=\"" + i.ToString() + "\" ");
+            temp.Replace(@"<www", "<www index=\"" + i.ToString() + "\"");
+            temp.Replace(@"<inproceedings", "<inproceedings index=\"" + i.ToString() + "\"");
+            temp.Replace(@"<phdthesis", "<phdthesis index=\"" + i.ToString() + "\"");
+            temp.Replace(@"<incollection", "<incollection index=\"" + i.ToString() + "\"");
+
+            temp.Replace(@"<sub>", "");
+            temp.Replace(@"</sub>", "");
+            temp.Replace(@"<sup>", "");
+            temp.Replace(@"</sup>", "");
+            temp.Replace(@"<i>", "");
+            temp.Replace(@"</i>", "");
+            temp.Replace(@"<tt>", "");
+            temp.Replace(@"</tt>", "");
+            sw.WriteLine(temp);
+
+        } while (true);
+
+        Console.WriteLine("读取成功");
+        sw.Close();
+        Console.WriteLine("存储成功");
+        Console.WriteLine();
+    }
+    /// <summary>
+    /// 获取作者和关键字字典
+    /// </summary>
+    public void getAuthorAndKeyword()
+    {
+        XmlReaderSettings settings = new XmlReaderSettings();
+        settings.DtdProcessing = DtdProcessing.Parse;
+
+        XmlReader reader = XmlReader.Create("D:\\dataxml\\dblp_index.xml", settings);
+        reader.MoveToContent();
+        string index = "";
+        int flag = 0;
+        authorIndexDic = new Dictionary<string, List<string>>();
+        keywordIndexDic = new Dictionary<string, List<string>>();
+        string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", "has", "not", "by", "into", "through", "off", "out", "from", "to" };
+        //FileStream fs_out = new FileStream("D:\\dataxml\\index.xml", FileMode.Append, FileAccess.Write);
+        //StreamWriter sw = new StreamWriter(fs_out);
+
+
+        while (reader.Read())
+        {
+            flag++;
+
+            if (flag % 1000000 == 0)
+                Console.WriteLine(flag.ToString());
+
+            if (reader.NodeType == XmlNodeType.Element)
+            {
+                if (reader.AttributeCount > 0)
+                {
+                    if (reader.GetAttribute("index") != "" && reader.GetAttribute("index") != null)
+                        index = reader.GetAttribute("index");
+                }
+                if (reader.Name == "author")
+                {
+
+                    string authorName = reader.ReadElementContentAsString();
+                    if (authorIndexDic.ContainsKey(authorName))
+                    {
+                        authorIndexDic[authorName].Add(index);
+                    }
+                    else
+                    {
+                        authorIndexDic.Add(authorName, new List<string>());
+                        authorIndexDic[authorName].Add(index);
+                    }
+
+                }
+                else if (reader.Name == "title")
+                {
+
+                    string title = reader.ReadElementContentAsString().ToLower();
+                    if (title == "home page")
+                        continue;
+                    string[] arr = title.Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
+                    foreach (string s in arr)
+                    {
+                        if (s != "" && !((System.Collections.IList)ignore).Contains(s))
+                        {
+                            if (keywordIndexDic.ContainsKey(s))
+                            {
+                                keywordIndexDic[s].Add(index);
+                            }
+                            else
+                            {
+                                keywordIndexDic.Add(s, new List<string>());
+                                keywordIndexDic[s].Add(index);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Console.WriteLine("finish author dictionary");
+        Console.WriteLine("finish keyword dictionary");
+    }
+    /// <summary>
+    /// 建立前100名作者索引
+    /// </summary>
+    /// <param name="filePath"></param>
+    public void findTop100(string filePath)
+    {
+        FileStream fs_out = new FileStream(filePath, FileMode.Append, FileAccess.Write);
+        StreamWriter sw = new StreamWriter(fs_out);
+        MinHeap resultHeap = new MinHeap();
+        KeyValuePair<string, int>[] result = new KeyValuePair<string, int>[100];
+        //Console.WriteLine(result.Count);
+        foreach (KeyValuePair<string, List<string>> kvp in authorIndexDic)
+        {
+            resultHeap.insert(new KeyValuePair<string, int>(kvp.Key, kvp.Value.Count));
+        }
+        for (int i = 99; i >= 0; i--)
+        {
+            result[i] = resultHeap.heap[0];
+            resultHeap.count--;
+            resultHeap.heap[0] = resultHeap.heap[resultHeap.count];
+            resultHeap.siftDown(0);
+        }
+        for (int i = 0; i < 100; i++)
+        {
+            sw.Write(result[i].Key + "/" + result[i].Value.ToString() + "\n");
+        }
+        sw.Close();
+        Console.WriteLine("finish top100 index");
+    }
+    /// <summary>
+    /// 创建作者b树索引
+    /// </summary>
+    public void createAuthorBTree()
+    {
+        var bTree = new BTree();
+        int i = 0;
+        foreach (KeyValuePair<string, List<string>> kvp in authorIndexDic)
+        {
+            bTree.Insert(kvp);
+            i++;
+            //if (i > 40)
+            //    break;
+            if (i % 10000 == 0)
+                Console.WriteLine(i.ToString());
+        }
+        Console.WriteLine("finish create Btree");
+        //bTree.PrintByKey();
+        bTree.InitialNodeIndex();
+        Console.WriteLine("finish Btree nodeIndex");
+        bTree.SaveBTree("D:\\dataxml\\authorBtreeIndex.txt");
+        Console.WriteLine("finish save Btree");
+    }
+    /// <summary>
+    /// 创建关键字b树索引
+    /// </summary>
+    public void createKeywordBTree()
+    {
+        var bTree = new BTree();
+        int i = 0;
+        foreach (KeyValuePair<string, List<string>> kvp in keywordIndexDic)
+        {
+            bTree.Insert(kvp);
+            i++;
+            //if (i > 40)
+            //    break;
+            if (i % 10000 == 0)
+                Console.WriteLine(i.ToString());
+        }
+        Console.WriteLine("finish create Btree");
+        //bTree.PrintByKey();
+        bTree.InitialNodeIndex();
+        Console.WriteLine("finish Btree nodeIndex");
+        bTree.SaveBTree("D:\\dataxml\\keywordBtreeIndex.txt");
+        Console.WriteLine("finish save Btree");
+    }
+}
+
+class Search
+{
+    public string[] authorBTreeLines;
+    public string[] keywordBTreeLines;
+    public void InitialAuthorBTreeLines(string filePath)
+    {
+        authorBTreeLines = File.ReadAllLines(filePath);
+    }
+    public void DeleteAuthorBTreeLines()
+    {
+        authorBTreeLines = null;
+    }
+    public string[] SearchAuthor(string key, int line)
+    {
+        int startLine = line;
+        string[] temp1 = authorBTreeLines[line].Split('/');
+        int nodeRows = int.Parse(temp1[0]);
+        int keyNumber = int.Parse(temp1[1]);
+        bool isLeaf = (temp1[2] == "1" ? true : false);
+        line++;
+        for (int i = 0; i < keyNumber; i++)
+        {
+            string[] temp2 = authorBTreeLines[line].Split('/');
+            string authorName = temp2[0];
+            int articleNum = int.Parse(temp2[1]);
+            if (key == authorName)
+            {
+                string[] result = new string[articleNum];
+                for (int j = 0; j < articleNum; j++)
+                {
+                    result[j] = authorBTreeLines[line + j + 1];
+                }
+                return result;
+            }
+            else if (String.Compare(key, authorName) == -1)
+            {
+                if (isLeaf)
+                {
+                    return null;
+                }
+                else
+                {
+                    return SearchAuthor(key, int.Parse(authorBTreeLines[startLine + nodeRows - keyNumber - 1 + i]) - 1);
+                }
+            }
+            else
+            {
+                line = line + articleNum + 1;
+            }
+        }
+        if (isLeaf)
+        {
+            return null;
+        }
+        else
+        {
+            return SearchAuthor(key, int.Parse(authorBTreeLines[startLine + nodeRows - 1]) - 1);
+        }
+
+    }
+    public void InitialKeywordBTreeLines(string filePath)
+    {
+        keywordBTreeLines = File.ReadAllLines(filePath);
+    }
+    public void DeleteKeywordBTreeLines()
+    {
+        keywordBTreeLines = null;
+    }
+    public string[] SearchKeyword(string key, int line)
+    {
+        int startLine = line;
+        string[] temp1 = keywordBTreeLines[line].Split('/');
+        int nodeRows = int.Parse(temp1[0]);
+        int keyNumber = int.Parse(temp1[1]);
+        bool isLeaf = (temp1[2] == "1" ? true : false);
+        line++;
+        for (int i = 0; i < keyNumber; i++)
+        {
+            string[] temp2 = keywordBTreeLines[line].Split('/');
+            string authorName = temp2[0];
+            int articleNum = int.Parse(temp2[1]);
+            if (key == authorName)
+            {
+                string[] result = new string[articleNum];
+                for (int j = 0; j < articleNum; j++)
+                {
+                    result[j] = keywordBTreeLines[line + j + 1];
+                }
+                return result;
+            }
+            else if (String.Compare(key, authorName) == -1)
+            {
+                if (isLeaf)
+                {
+                    return null;
+                }
+                else
+                {
+                    return SearchKeyword(key, int.Parse(keywordBTreeLines[startLine + nodeRows - keyNumber - 1 + i]) - 1);
+                }
+            }
+            else
+            {
+                line = line + articleNum + 1;
+            }
+        }
+        if (isLeaf)
+        {
+            return null;
+        }
+        else
+        {
+            return SearchKeyword(key, int.Parse(keywordBTreeLines[startLine + nodeRows - 1]) - 1);
+        }
+
+    }
+    public string[] SearchTitle(string title)
+    {
+        string[] keywords = title.ToLower().Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
+        if (keywords.Length == 0)
+            return null;
+        List<string> result = SearchKeyword(keywords[0], 0).ToList<string>();
+        for (int i = 1; i < keywords.Length; i++)
+        {
+            List<string> temp = SearchKeyword(keywords[i], 0).ToList<string>();
+            result = result.Intersect(temp).ToList();
+        }
+        return result.ToArray<string>();
+    }
+}
+
+//namespace 文献管理系统
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+
+
+
+
+//            //Console.WriteLine("输出排序后键值");
+
+
+
+//            //PreprocessingUtils utils = new PreprocessingUtils();
+//            //utils.getAuthorAndKeyword();
+//            //utils.findTop100("d:\\dataxml\\top100.txt");
+//            //utils.createAuthorBTree();
+//            //utils.createKeywordBTree();
+
+//            FileStream fs_out = new FileStream(@"D:\dataxml\zhiguancheng.txt", FileMode.Append, FileAccess.Write);
+//            StreamWriter sw = new StreamWriter(fs_out);
+
+//            Search search = new Search();
+//            search.InitialAuthorBTreeLines("D:\\dataxml\\authorBtreeIndex.txt");
+
+//            DateTime beforDT = System.DateTime.Now;
+//            string[] result = search.SearchAuthor("H. Vincent Poor", 0);
+//            DateTime afterDT = System.DateTime.Now;
+//            TimeSpan ts = afterDT.Subtract(beforDT);
+//            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+//            Console.WriteLine("Paul Kocher");
+//            for (int i = 0; i < result.Length; i++)
+//            {
+//                Console.WriteLine("\"" + result[i] + "\"");
+//                sw.Write("\"" + result[i] + "\",\n");
+
+//            }
+//            sw.Close();
+//            //search.InitialKeywordBTreeLines("D:\\dataxml\\keywordBtreeIndex.txt");
+//            //DateTime beforDT = System.DateTime.Now;
+//            //string[] result = search.SearchTitle("feature graphs");
+//            //DateTime afterDT = System.DateTime.Now;
+//            //TimeSpan ts = afterDT.Subtract(beforDT);
+//            //Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+//            //Console.WriteLine("feature graph");
+//            //for (int i = 0; i < result.Length; i++)
+//            //{
+//            //    Console.WriteLine(result[i]);
+//            //}
+//        }
+//    }
+//}
