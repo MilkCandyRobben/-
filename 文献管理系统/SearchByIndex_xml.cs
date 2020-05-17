@@ -35,12 +35,18 @@ namespace 文献管理系统
                     {
                         if (reader.GetAttribute("index") == index)
                         {
+                            //通过index定位当前的标签的name是什么并且选择
+                            //由于XmlReader是按行读取的 所以需要按行判断标签的名字是否符合要求
+                            //此处属于投机取巧 因为author journal标签是字标签 
+                            //当遍历到最后一位时 遇到article或者inproceedings等大标签即停止
+                            //搜索花的时间最长为1分钟
                             switch (reader.Name)
                             {
                                 case "article":
                                     reader.MoveToElement();//跳过空白节点 免得影响条件判断
                                     while (reader.Read())
                                     {
+
                                         reader.MoveToContent();
                                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "volume" || reader.Name == "ee" || reader.Name == "isbn" || reader.Name == "url" || reader.Name == "journal" || reader.Name == "month" || reader.Name == "year" || reader.Name == "title" || reader.Name == "publisher"))
                                         {
@@ -133,6 +139,7 @@ namespace 文献管理系统
                                     break;
                             }
                             break;
+                            //这个break是为了避免reader停不下来知道最后一行
                         }
                     }
                 }
