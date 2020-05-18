@@ -841,56 +841,56 @@ class Search
     }
 }
 
-//namespace ConsoleApp3
-//{
-//    class Program
-//    {
-//        static void Main(string[] args)
-//        {
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
 
 
 
-//            //Console.WriteLine("输出排序后键值");
+            //Console.WriteLine("输出排序后键值");
 
 
 
-//            //PreprocessingUtils utils = new PreprocessingUtils();
-//            //utils.getAuthorAndKeyword();
-//            //utils.findTop100("d:\\dataxml\\top100.txt");
-//            //utils.createAuthorBTree("E:\\Data Structure Final\\AuthorBTree.txt");
-//            //utils.createKeywordBTree("E:\\Data Structure Final\\KeywordBTree.txt");
+            //PreprocessingUtils utils = new PreprocessingUtils();
+            //utils.getAuthorAndKeyword();
+            //utils.findTop100("d:\\dataxml\\top100.txt");
+            //utils.createAuthorBTree("E:\\Data Structure Final\\AuthorBTree.txt");
+            //utils.createKeywordBTree("E:\\Data Structure Final\\KeywordBTree.txt");
 
-//            FileStream fs_out = new FileStream(@"D:\dataxml\zhiguancheng.txt", FileMode.Append, FileAccess.Write);
-//            StreamWriter sw = new StreamWriter(fs_out);
+            FileStream fs_out = new FileStream(@"D:\dataxml\zhiguancheng.txt", FileMode.Append, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs_out);
 
-//            Search search = new Search();
-//            search.InitialAuthorBTreeLines("D:\\dataxml\\authorBtreeIndex.txt");
+            Search search = new Search();
+            search.InitialAuthorBTreeLines("D:\\dataxml\\authorBtreeIndex.txt");
 
-//            DateTime beforDT = System.DateTime.Now;
-//            string[] result = search.SearchAuthor("H. Vincent Poor", 0);
-//            DateTime afterDT = System.DateTime.Now;
-//            TimeSpan ts = afterDT.Subtract(beforDT);
-//            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
-//            Console.WriteLine("Paul Kocher");
-//            for (int i = 0; i < result.Length; i++)
-//            {
-//                Console.WriteLine("\"" + result[i] + "\"");
-//                sw.Write("\"" + result[i] + "\",\n");
+            DateTime beforDT = System.DateTime.Now;
+            string[] result = search.SearchAuthor("H. Vincent Poor", 0);
+            DateTime afterDT = System.DateTime.Now;
+            TimeSpan ts = afterDT.Subtract(beforDT);
+            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+            Console.WriteLine("Paul Kocher");
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine("\"" + result[i] + "\"");
+                sw.Write("\"" + result[i] + "\",\n");
 
-//            }
-//            sw.Close();
-//            //search.InitialKeywordBTreeLines("D:\\dataxml\\keywordBtreeIndex.txt");
-//            //DateTime beforDT = System.DateTime.Now;
-//            //string[] result = search.SearchTitle("feature graphs");
-//            //DateTime afterDT = System.DateTime.Now;
-//            //TimeSpan ts = afterDT.Subtract(beforDT);
-//            //Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
-//            //Console.WriteLine("feature graph");
-//            //for (int i = 0; i < result.Length; i++)
-//            //{
-//            //    Console.WriteLine(result[i]);
-//            //}
-//        }
-//    }
-//}
+            }
+            sw.Close();
+            //search.InitialKeywordBTreeLines("D:\\dataxml\\keywordBtreeIndex.txt");
+            //DateTime beforDT = System.DateTime.Now;
+            //string[] result = search.SearchTitle("feature graphs");
+            //DateTime afterDT = System.DateTime.Now;
+            //TimeSpan ts = afterDT.Subtract(beforDT);
+            //Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+            //Console.WriteLine("feature graph");
+            //for (int i = 0; i < result.Length; i++)
+            //{
+            //    Console.WriteLine(result[i]);
+            //}
+        }
+    }
+}
