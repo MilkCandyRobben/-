@@ -25,7 +25,7 @@ namespace 文献管理系统
         public StreamWriter sw;
        
         
-        public bool getInfomation(string[] indexGroup,string filePath,string outputPath)
+        public bool getInfomation(List<string> indexGroup,string filePath,string outputPath)
         {
             fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
             sw = new StreamWriter(fs_out);
