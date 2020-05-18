@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildBTreeAndSearch.cs" />
     <Compile Include="Literature_entity.cs" />
     <Compile Include="Author_entity.cs" />
     <Compile Include="MainForm.cs">

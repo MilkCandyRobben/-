@@ -425,105 +425,106 @@ class PreprocessingUtils
         int i = 99;
         StringBuilder temp;
         string line;
-        sw.Write("<?xml version=\"1.0\" encoding=\"ISO - 8859 - 1\"?>");
+        sw.Write("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+        sr.ReadLine();
         sr.ReadLine();
         sw.Write("<!DOCTYPE doctypeName [\n" +
-            "< !ENTITY nbsp \"&#160;\"  >\n" +
-            "< !ENTITY iexcl \"&#161;\"  >\n" +
-            "< !ENTITY cent \"&#162;\"  >\n" +
-            "< !ENTITY pound \"&#163;\"  >\n" +
-            "< !ENTITY curren \"&#164;\"  >\n" +
-            "< !ENTITY yen \"&#165;\"  >\n" +
-            "< !ENTITY brvbar \"&#166;\"  >\n" +
-            "< !ENTITY sect \"&#167;\"  >\n" +
-            "< !ENTITY uml \"&#168;\"  >\n" +
-            "< !ENTITY copy \"&#169;\"  >\n" +
-            "< !ENTITY ordf \"&#170;\"  >\n" +
-            "< !ENTITY laquo \"&#171;\"  >\n" +
-            "< !ENTITY not \"&#172;\"  >\n" +
-            "< !ENTITY shy \"&#173;\"  >\n" +
-            "< !ENTITY reg \"&#174;\"  >\n" +
-            "< !ENTITY macr \"&#175;\"  >\n" +
-            "< !ENTITY deg \"&#176;\"  >\n" +
-            "< !ENTITY plusmn \"&#177;\"  >\n" +
-            "< !ENTITY sup2 \"&#178;\"  >\n" +
-            "< !ENTITY sup3 \"&#179;\"  >\n" +
-            "< !ENTITY acute \"&#180;\"  >\n" +
-            "< !ENTITY micro \"&#181;\"  >\n" +
-            "< !ENTITY para \"&#182;\"  >\n" +
-            "< !ENTITY middot \"&#183;\"  >\n" +
-            "< !ENTITY cedil \"&#184;\"  >\n" +
-            "< !ENTITY sup1 \"&#185;\"  >\n" +
-            "< !ENTITY ordm \"&#186;\"  >\n" +
-            "< !ENTITY raquo \"&#187;\"  >\n" +
-            "< !ENTITY frac14 \"&#188;\"  >\n" +
-            "< !ENTITY frac12 \"&#189;\"  >\n" +
-            "< !ENTITY frac34 \"&#190;\"  >\n" +
-            "< !ENTITY iquest \"&#191;\"  >\n" +
-            "< !ENTITY times \"&#215;\"  >\n" +
-            "< !ENTITY divide \"&#247;\"  >\n" +
-            "< !ENTITY Agrave \"&#192;\"  >\n" +
-            "< !ENTITY Aacute \"&#193;\"  >\n" +
-            "< !ENTITY Acirc \"&#194;\"  >\n" +
-            "< !ENTITY Atilde \"&#195;\"  >\n" +
-            "< !ENTITY Auml \"&#196;\"  >\n" +
-            "< !ENTITY Aring \"&#197;\"  >\n" +
-            "< !ENTITY AElig \"&#198;\"  >\n" +
-            "< !ENTITY Ccedil \"&#199;\"  >\n" +
-            "< !ENTITY Egrave \"&#200;\"  >\n" +
-            "< !ENTITY Eacute \"&#201;\"  >\n" +
-            "< !ENTITY Ecirc \"&#202;\"  >\n" +
-            "< !ENTITY Euml \"&#203;\"  >\n" +
-            "< !ENTITY Igrave \"&#204;\"  >\n" +
-            "< !ENTITY Iacute \"&#205;\"  >\n" +
-            "< !ENTITY Icirc \"&#206;\"  >\n" +
-            "< !ENTITY Iuml \"&#207;\"  >\n" +
-            "< !ENTITY ETH \"&#208;\"  >\n" +
-            "< !ENTITY Ntilde \"&#209;\"  >\n" +
-            "< !ENTITY Ograve \"&#210;\"  >\n" +
-            "< !ENTITY Oacute \"&#211;\"  >\n" +
-            "< !ENTITY Ocirc \"&#212;\"  >\n" +
-            "< !ENTITY Otilde \"&#213;\"  >\n" +
-            "< !ENTITY Ouml \"&#214;\"  >\n" +
-            "< !ENTITY Oslash \"&#216;\"  >\n" +
-            "< !ENTITY Ugrave \"&#217;\"  >\n" +
-            "< !ENTITY Uacute \"&#218;\"  >\n" +
-            "< !ENTITY Ucirc \"&#219;\"  >\n" +
-            "< !ENTITY Uuml \"&#220;\"  >\n" +
-            "< !ENTITY Yacute \"&#221;\"  >\n" +
-            "< !ENTITY THORN \"&#222;\"  >\n" +
-            "< !ENTITY szlig \"&#223;\"  >\n" +
-            "< !ENTITY agrave \"&#224;\"  >\n" +
-            "< !ENTITY aacute \"&#225;\"  >\n" +
-            "< !ENTITY acirc \"&#226;\"  >\n" +
-            "< !ENTITY atilde \"&#227;\"  >\n" +
-            "< !ENTITY auml \"&#228;\"  >\n" +
-            "< !ENTITY aring \"&#229;\"  >\n" +
-            "< !ENTITY aelig \"&#230;\"  >\n" +
-            "< !ENTITY ccedil \"&#231;\"  >\n" +
-            "< !ENTITY egrave \"&#232;\"  >\n" +
-            "< !ENTITY eacute \"&#233;\"  >\n" +
-            "< !ENTITY ecirc \"&#234;\"  >\n" +
-            "< !ENTITY euml \"&#235;\"  >\n" +
-            "< !ENTITY igrave \"&#236;\"  >\n" +
-            "< !ENTITY iacute \"&#237;\"  >\n" +
-            "< !ENTITY icirc \"&#238;\"  >\n" +
-            "< !ENTITY iuml \"&#239;\"  >\n" +
-            "< !ENTITY eth \"&#240;\"  >\n" +
-            "< !ENTITY ntilde \"&#241;\"  >\n" +
-            "< !ENTITY ograve \"&#242;\"  >\n" +
-            "< !ENTITY oacute \"&#243;\"  >\n" +
-            "< !ENTITY ocirc \"&#244;\"  >\n" +
-            "< !ENTITY otilde \"&#245;\"  >\n" +
-            "< !ENTITY ouml \"&#246;\"  >\n" +
-            "< !ENTITY oslash \"&#248;\"  >\n" +
-            "< !ENTITY ugrave \"&#249;\"  >\n" +
-            "< !ENTITY uacute \"&#250;\"  >\n" +
-            "< !ENTITY ucirc \"&#251;\"  >\n" +
-            "< !ENTITY uuml \"&#252;\"  >\n" +
-            "< !ENTITY yacute \"&#253;\"  >\n" +
-            "< !ENTITY thorn \"&#254;\"  >\n" +
-            "< !ENTITY yuml \"&#255;\" >\n]> \n");
+            "<!ENTITY nbsp \"&#160;\">\n" +
+            "<!ENTITY iexcl \"&#161;\">\n" +
+            "<!ENTITY cent \"&#162;\">\n" +
+            "<!ENTITY pound \"&#163;\">\n" +
+            "<!ENTITY curren \"&#164;\">\n" +
+            "<!ENTITY yen \"&#165;\">\n" +
+            "<!ENTITY brvbar \"&#166;\">\n" +
+            "<!ENTITY sect \"&#167;\">\n" +
+            "<!ENTITY uml \"&#168;\">\n" +
+            "<!ENTITY copy \"&#169;\">\n" +
+            "<!ENTITY ordf \"&#170;\">\n" +
+            "<!ENTITY laquo \"&#171;\">\n" +
+            "<!ENTITY not \"&#172;\">\n" +
+            "<!ENTITY shy \"&#173;\">\n" +
+            "<!ENTITY reg \"&#174;\">\n" +
+            "<!ENTITY macr \"&#175;\">\n" +
+            "<!ENTITY deg \"&#176;\">\n" +
+            "<!ENTITY plusmn \"&#177;\">\n" +
+            "<!ENTITY sup2 \"&#178;\">\n" +
+            "<!ENTITY sup3 \"&#179;\">\n" +
+            "<!ENTITY acute \"&#180;\">\n" +
+            "<!ENTITY micro \"&#181;\">\n" +
+            "<!ENTITY para \"&#182;\">\n" +
+            "<!ENTITY middot \"&#183;\">\n" +
+            "<!ENTITY cedil \"&#184;\">\n" +
+            "<!ENTITY sup1 \"&#185;\">\n" +
+            "<!ENTITY ordm \"&#186;\">\n" +
+            "<!ENTITY raquo \"&#187;\">\n" +
+            "<!ENTITY frac14 \"&#188;\">\n" +
+            "<!ENTITY frac12 \"&#189;\">\n" +
+            "<!ENTITY frac34 \"&#190;\">\n" +
+            "<!ENTITY iquest \"&#191;\">\n" +
+            "<!ENTITY times \"&#215;\">\n" +
+            "<!ENTITY divide \"&#247;\">\n" +
+            "<!ENTITY Agrave \"&#192;\">\n" +
+            "<!ENTITY Aacute \"&#193;\">\n" +
+            "<!ENTITY Acirc \"&#194;\">\n" +
+            "<!ENTITY Atilde \"&#195;\">\n" +
+            "<!ENTITY Auml \"&#196;\">\n" +
+            "<!ENTITY Aring \"&#197;\">\n" +
+            "<!ENTITY AElig \"&#198;\">\n" +
+            "<!ENTITY Ccedil \"&#199;\">\n" +
+            "<!ENTITY Egrave \"&#200;\">\n" +
+            "<!ENTITY Eacute \"&#201;\">\n" +
+            "<!ENTITY Ecirc \"&#202;\">\n" +
+            "<!ENTITY Euml \"&#203;\">\n" +
+            "<!ENTITY Igrave \"&#204;\">\n" +
+            "<!ENTITY Iacute \"&#205;\">\n" +
+            "<!ENTITY Icirc \"&#206;\">\n" +
+            "<!ENTITY Iuml \"&#207;\">\n" +
+            "<!ENTITY ETH \"&#208;\">\n" +
+            "<!ENTITY Ntilde \"&#209;\">\n" +
+            "<!ENTITY Ograve \"&#210;\">\n" +
+            "<!ENTITY Oacute \"&#211;\">\n" +
+            "<!ENTITY Ocirc \"&#212;\">\n" +
+            "<!ENTITY Otilde \"&#213;\">\n" +
+            "<!ENTITY Ouml \"&#214;\">\n" +
+            "<!ENTITY Oslash \"&#216;\">\n" +
+            "<!ENTITY Ugrave \"&#217;\">\n" +
+            "<!ENTITY Uacute \"&#218;\">\n" +
+            "<!ENTITY Ucirc \"&#219;\">\n" +
+            "<!ENTITY Uuml \"&#220;\">\n" +
+            "<!ENTITY Yacute \"&#221;\">\n" +
+            "<!ENTITY THORN \"&#222;\">\n" +
+            "<!ENTITY szlig \"&#223;\">\n" +
+            "<!ENTITY agrave \"&#224;\">\n" +
+            "<!ENTITY aacute \"&#225;\">\n" +
+            "<!ENTITY acirc \"&#226;\">\n" +
+            "<!ENTITY atilde \"&#227;\">\n" +
+            "<!ENTITY auml \"&#228;\">\n" +
+            "<!ENTITY aring \"&#229;\">\n" +
+            "<!ENTITY aelig \"&#230;\">\n" +
+            "<!ENTITY ccedil \"&#231;\">\n" +
+            "<!ENTITY egrave \"&#232;\">\n" +
+            "<!ENTITY eacute \"&#233;\">\n" +
+            "<!ENTITY ecirc \"&#234;\">\n" +
+            "<!ENTITY euml \"&#235;\">\n" +
+            "<!ENTITY igrave \"&#236;\">\n" +
+            "<!ENTITY iacute \"&#237;\">\n" +
+            "<!ENTITY icirc \"&#238;\">\n" +
+            "<!ENTITY iuml \"&#239;\">\n" +
+            "<!ENTITY eth \"&#240;\">\n" +
+            "<!ENTITY ntilde \"&#241;\">\n" +
+            "<!ENTITY ograve \"&#242;\">\n" +
+            "<!ENTITY oacute \"&#243;\">\n" +
+            "<!ENTITY ocirc \"&#244;\">\n" +
+            "<!ENTITY otilde \"&#245;\">\n" +
+            "<!ENTITY ouml \"&#246;\">\n" +
+            "<!ENTITY oslash \"&#248;\">\n" +
+            "<!ENTITY ugrave \"&#249;\">\n" +
+            "<!ENTITY uacute \"&#250;\">\n" +
+            "<!ENTITY ucirc \"&#251;\">\n" +
+            "<!ENTITY uuml \"&#252;\">\n" +
+            "<!ENTITY yacute \"&#253;\">\n" +
+            "<!ENTITY thorn \"&#254;\">\n" +
+            "<!ENTITY yuml \"&#255;\">\n]>\n");
 
         do
         {
@@ -560,12 +561,12 @@ class PreprocessingUtils
     /// <summary>
     /// 获取作者和关键字字典
     /// </summary>
-    public void getAuthorAndKeyword()
+    public void getAuthorAndKeyword(string filepath)
     {
         XmlReaderSettings settings = new XmlReaderSettings();
         settings.DtdProcessing = DtdProcessing.Parse;
 
-        XmlReader reader = XmlReader.Create("D:\\dataxml\\dblp_index.xml", settings);
+        XmlReader reader = XmlReader.Create(filepath, settings);
         reader.MoveToContent();
         string index = "";
         int flag = 0;
@@ -841,56 +842,56 @@ class Search
     }
 }
 
-namespace ConsoleApp3
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+//namespace ConsoleApp3
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
 
 
 
 
-            //Console.WriteLine("输出排序后键值");
+//            //Console.WriteLine("输出排序后键值");
 
 
 
-            //PreprocessingUtils utils = new PreprocessingUtils();
-            //utils.getAuthorAndKeyword();
-            //utils.findTop100("d:\\dataxml\\top100.txt");
-            //utils.createAuthorBTree("E:\\Data Structure Final\\AuthorBTree.txt");
-            //utils.createKeywordBTree("E:\\Data Structure Final\\KeywordBTree.txt");
+//            //PreprocessingUtils utils = new PreprocessingUtils();
+//            //utils.getAuthorAndKeyword();
+//            //utils.findTop100("d:\\dataxml\\top100.txt");
+//            //utils.createAuthorBTree("E:\\Data Structure Final\\AuthorBTree.txt");
+//            //utils.createKeywordBTree("E:\\Data Structure Final\\KeywordBTree.txt");
 
-            FileStream fs_out = new FileStream(@"D:\dataxml\zhiguancheng.txt", FileMode.Append, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs_out);
+//            FileStream fs_out = new FileStream(@"D:\dataxml\zhiguancheng.txt", FileMode.Append, FileAccess.Write);
+//            StreamWriter sw = new StreamWriter(fs_out);
 
-            Search search = new Search();
-            search.InitialAuthorBTreeLines("D:\\dataxml\\authorBtreeIndex.txt");
+//            Search search = new Search();
+//            search.InitialAuthorBTreeLines("D:\\dataxml\\authorBtreeIndex.txt");
 
-            DateTime beforDT = System.DateTime.Now;
-            string[] result = search.SearchAuthor("H. Vincent Poor", 0);
-            DateTime afterDT = System.DateTime.Now;
-            TimeSpan ts = afterDT.Subtract(beforDT);
-            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
-            Console.WriteLine("Paul Kocher");
-            for (int i = 0; i < result.Length; i++)
-            {
-                Console.WriteLine("\"" + result[i] + "\"");
-                sw.Write("\"" + result[i] + "\",\n");
+//            DateTime beforDT = System.DateTime.Now;
+//            string[] result = search.SearchAuthor("H. Vincent Poor", 0);
+//            DateTime afterDT = System.DateTime.Now;
+//            TimeSpan ts = afterDT.Subtract(beforDT);
+//            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+//            Console.WriteLine("Paul Kocher");
+//            for (int i = 0; i < result.Length; i++)
+//            {
+//                Console.WriteLine("\"" + result[i] + "\"");
+//                sw.Write("\"" + result[i] + "\",\n");
 
-            }
-            sw.Close();
-            //search.InitialKeywordBTreeLines("D:\\dataxml\\keywordBtreeIndex.txt");
-            //DateTime beforDT = System.DateTime.Now;
-            //string[] result = search.SearchTitle("feature graphs");
-            //DateTime afterDT = System.DateTime.Now;
-            //TimeSpan ts = afterDT.Subtract(beforDT);
-            //Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
-            //Console.WriteLine("feature graph");
-            //for (int i = 0; i < result.Length; i++)
-            //{
-            //    Console.WriteLine(result[i]);
-            //}
-        }
-    }
-}
+//            }
+//            sw.Close();
+//            //search.InitialKeywordBTreeLines("D:\\dataxml\\keywordBtreeIndex.txt");
+//            //DateTime beforDT = System.DateTime.Now;
+//            //string[] result = search.SearchTitle("feature graphs");
+//            //DateTime afterDT = System.DateTime.Now;
+//            //TimeSpan ts = afterDT.Subtract(beforDT);
+//            //Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+//            //Console.WriteLine("feature graph");
+//            //for (int i = 0; i < result.Length; i++)
+//            //{
+//            //    Console.WriteLine(result[i]);
+//            //}
+//        }
+//    }
+//}

@@ -66,7 +66,6 @@ namespace 文献管理系统
                                         {
 
                                             sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
-
                                         }
                                         else
                                             break;
