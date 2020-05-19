@@ -8,6 +8,7 @@ using System.Xml.Schema;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace 文献管理系统
 {
@@ -23,7 +24,7 @@ namespace 文献管理系统
 
         public FileStream fs_out;
         public StreamWriter sw;
-       
+        public List<string> author_set { set; get; }
         
         public bool getInfomation(string[] indexGroup,string filePath,string outputPath)
         {
@@ -31,12 +32,20 @@ namespace 文献管理系统
             sw = new StreamWriter(fs_out);
             //XmlReaderSettings解决dtd约束权限问题 加入这三句就能够解决
             //ValidationCallBack记得要Override
+            //XmlReaderSettings settings = new XmlReaderSettings();
+            //settings.ProhibitDtd = false;
+            //settings.ValidationType = ValidationType.DTD;
+            //settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+
+
             XmlReaderSettings settings = new XmlReaderSettings();
-            settings.ProhibitDtd = false;
-            settings.ValidationType = ValidationType.DTD;
-            settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
-            //reader的create函数也需要加入settings设置 
+            settings.DtdProcessing = DtdProcessing.Parse;
             XmlReader reader = XmlReader.Create(filePath, settings);
+
+            //XmlReader reader = XmlReader.Create(filepath, settings);
+
+            //reader的create函数也需要加入settings设置 
+
             //if (Infomation == null)
             //{
             //    Infomation = new List<string>();
@@ -155,7 +164,60 @@ namespace 文献管理系统
             }
             reader.Close();
             sw.Close();
+            fs_out.Close();
+            
             // return Infomation;
+            return true;
+        }
+
+        public bool Author_Partnership(string[] indexGroup, string filepath, string outputPath) 
+        {
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.DtdProcessing = DtdProcessing.Parse;
+            XmlReader reader = XmlReader.Create(filepath, settings);
+
+            fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
+            sw = new StreamWriter(fs_out);
+
+            reader.MoveToContent();
+            foreach (string index in indexGroup) 
+            {
+                while (reader.Read())
+                {
+                    
+                    if (reader.NodeType == XmlNodeType.Element)
+                    {
+                        if (reader.GetAttribute("index") == index) 
+                        {
+                            reader.MoveToContent();
+                            while (reader.Read())
+                            {
+                                reader.MoveToContent();
+                                if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "editor"))
+                                {
+                                    author_set.Add(reader.ReadInnerXml());
+                                }
+                                else
+                                    break;
+                            }
+                            
+                            break;
+                        }
+                    }
+                        
+                }
+            }
+            HashSet<string> hs = new HashSet<string>(author_set);
+            string[] author_combine = hs.ToArray<string>();
+            sw.WriteLine("Partnership:");
+            for (int i = 0; i < author_combine.Length; i++)
+            {
+                sw.WriteLine(author_combine[i]);
+            }
+            reader.Close();
+            sw.Close();
+            fs_out.Close();
+
             return true;
         }
         private static void ValidationCallBack(object sender, ValidationEventArgs e)

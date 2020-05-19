@@ -36,9 +36,9 @@ namespace 文献管理系统
             string[] result = search_title.SearchTitle(TitleName);
 
             SearchByIndex_xml content_title = new SearchByIndex_xml();
-            content_title.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result_title.txt");
+            content_title.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result_"+ TitleName + ".txt");
 
-            System.Diagnostics.Process.Start("D:\\dataxml\\result\\result_title.txt");
+            System.Diagnostics.Process.Start("D:\\dataxml\\result\\result_" + TitleName + ".txt");
 
             search_title.DeleteKeywordBTreeLines();
             result = null;

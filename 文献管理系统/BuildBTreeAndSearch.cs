@@ -307,10 +307,12 @@ public class MinHeap
 {
     public KeyValuePair<string, int>[] heap;
     public int count;
-    public MinHeap()
+    public int max;
+    public MinHeap(int max)
     {
-        heap = new KeyValuePair<string, int>[100];
-        for (int i = 0; i < 100; i++)
+        this.max = max;
+        heap = new KeyValuePair<string, int>[max];
+        for (int i = 0; i < max; i++)
         {
             heap[i] = new KeyValuePair<string, int>("", 0);
         }
@@ -318,7 +320,7 @@ public class MinHeap
     }
     public void insert(KeyValuePair<string, int> kvp)
     {
-        if (count < 100)
+        if (count < max)
         {
             heap[count] = kvp;
             siftUp(count);
@@ -642,7 +644,7 @@ class PreprocessingUtils
     {
         FileStream fs_out = new FileStream(filePath, FileMode.Append, FileAccess.Write);
         StreamWriter sw = new StreamWriter(fs_out);
-        MinHeap resultHeap = new MinHeap();
+        MinHeap resultHeap = new MinHeap(100);
         KeyValuePair<string, int>[] result = new KeyValuePair<string, int>[100];
         //Console.WriteLine(result.Count);
         foreach (KeyValuePair<string, List<string>> kvp in authorIndexDic)
@@ -827,18 +829,45 @@ class Search
         }
 
     }
+    //public string[] SearchTitle(string title)
+    //{
+    //    string[] keywords = title.ToLower().Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
+    //    if (keywords.Length == 0)
+    //        return null;
+    //    List<string> result = SearchKeyword(keywords[0], 0).ToList<string>();
+    //    for (int i = 1; i < keywords.Length; i++)
+    //    {
+    //        List<string> temp = SearchKeyword(keywords[i], 0).ToList<string>();
+    //        result = result.Intersect(temp).ToList();
+    //    }
+    //    return result.ToArray<string>();
+    //}
     public string[] SearchTitle(string title)
     {
         string[] keywords = title.ToLower().Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
+        string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", "has", "not", "by", "into", "through", "off", "out", "from", "to" };
         if (keywords.Length == 0)
             return null;
         List<string> result = SearchKeyword(keywords[0], 0).ToList<string>();
+        if (result == null)
+            return null;
         for (int i = 1; i < keywords.Length; i++)
         {
-            List<string> temp = SearchKeyword(keywords[i], 0).ToList<string>();
-            result = result.Intersect(temp).ToList();
+            if (keywords[i] != "" && !((System.Collections.IList)ignore).Contains(keywords[i]))
+            {
+                List<string> temp = SearchKeyword(keywords[i], 0).ToList<string>();
+                if (temp == null)
+                    return null;
+                result = result.Intersect(temp).ToList();
+            }
         }
-        return result.ToArray<string>();
+        if (result != null)
+        {
+            return result.ToArray<string>();
+        }
+        else
+            return null;
+        
     }
 }
 

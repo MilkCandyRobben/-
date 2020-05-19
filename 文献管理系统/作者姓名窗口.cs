@@ -32,8 +32,8 @@ namespace 文献管理系统
             search.InitialAuthorBTreeLines("D:\\dataxml\\AuthorBTree.txt");
             string[] result = search.SearchAuthor(AuthorName, 0);
             SearchByIndex_xml content = new SearchByIndex_xml();
-            content.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result.txt");
-            System.Diagnostics.Process.Start("D:\\dataxml\\result\\result.txt");
+            content.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result_"+AuthorName+".txt");
+            System.Diagnostics.Process.Start("D:\\dataxml\\result\\result_" + AuthorName + ".txt");
 
             search.DeleteAuthorBTreeLines();
             result = null;
