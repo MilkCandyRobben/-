@@ -867,11 +867,13 @@ class Search
 
 //            Search search = new Search();
 //            search.InitialAuthorBTreeLines("D:\\dataxml\\authorBtreeIndex.txt");
-
-//            DateTime beforDT = System.DateTime.Now;
 //            string[] result = search.SearchAuthor("H. Vincent Poor", 0);
+              
+//            DateTime beforDT = System.DateTime.Now;
+
 //            DateTime afterDT = System.DateTime.Now;
-//            TimeSpan ts = afterDT.Subtract(beforDT);
+//            TimeSpan ts = afterDT.Subtract(beforDT)
+;
 //            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
 //            Console.WriteLine("Paul Kocher");
 //            for (int i = 0; i < result.Length; i++)
