@@ -179,6 +179,7 @@ namespace 文献管理系统
             fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
             sw = new StreamWriter(fs_out);
 
+            author_set = new List<string>();
             reader.MoveToContent();
             foreach (string index in indexGroup) 
             {
@@ -220,9 +221,9 @@ namespace 文献管理系统
 
             return true;
         }
-        private static void ValidationCallBack(object sender, ValidationEventArgs e)
-        {
-            //Console.WriteLine("Validation Error: {0}", e.Message);
-        }
+        //private static void ValidationCallBack(object sender, ValidationEventArgs e)
+        //{
+        //    //Console.WriteLine("Validation Error: {0}", e.Message);
+        //}
     }
 }

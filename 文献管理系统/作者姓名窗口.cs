@@ -38,5 +38,19 @@ namespace 文献管理系统
             search.DeleteAuthorBTreeLines();
             result = null;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string AuthorName = this.textBox1.Text;
+            Search search = new Search();
+            search.InitialAuthorBTreeLines("D:\\dataxml\\AuthorBTree.txt");
+            string[] result = search.SearchAuthor(AuthorName, 0);
+            SearchByIndex_xml content = new SearchByIndex_xml();
+            content.Author_Partnership(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\ "+ AuthorName + "'s partnership.txt");
+            System.Diagnostics.Process.Start("D:\\dataxml\\result\\ " + AuthorName + "'s partnership.txt");
+
+            search.DeleteAuthorBTreeLines();
+            result = null;
+        }
     }
 }

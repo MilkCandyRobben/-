@@ -74,13 +74,22 @@ namespace 文献管理系统
 
         private void button2_Click(object sender, EventArgs e)
         {
+            作者姓名窗口 form = new 作者姓名窗口();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Show();
             hideSubMenu();
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Process.Start("D:\\dataxml\\top100.txt");
             hideSubMenu();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("D:\\dataxml\\Hotspot.txt");
         }
     }
 }

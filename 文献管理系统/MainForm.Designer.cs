@@ -36,6 +36,7 @@ namespace 文献管理系统
             this.搜索按钮 = new System.Windows.Forms.Button();
             this.工具按钮 = new System.Windows.Forms.Button();
             this.图标panel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.侧边菜单栏panel.SuspendLayout();
             this.子菜单panel.SuspendLayout();
             this.SuspendLayout();
@@ -44,13 +45,14 @@ namespace 文献管理系统
             // 
             this.侧边菜单栏panel.AutoScroll = true;
             this.侧边菜单栏panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.侧边菜单栏panel.Controls.Add(this.button1);
             this.侧边菜单栏panel.Controls.Add(this.子菜单panel);
             this.侧边菜单栏panel.Controls.Add(this.工具按钮);
             this.侧边菜单栏panel.Controls.Add(this.图标panel);
             this.侧边菜单栏panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.侧边菜单栏panel.Location = new System.Drawing.Point(0, 0);
             this.侧边菜单栏panel.Name = "侧边菜单栏panel";
-            this.侧边菜单栏panel.Size = new System.Drawing.Size(250, 553);
+            this.侧边菜单栏panel.Size = new System.Drawing.Size(250, 584);
             this.侧边菜单栏panel.TabIndex = 0;
             // 
             // 子菜单panel
@@ -151,11 +153,31 @@ namespace 文献管理系统
             this.图标panel.Size = new System.Drawing.Size(250, 100);
             this.图标panel.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.LightGray;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 266);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(250, 40);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "热点统计";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 553);
+            this.ClientSize = new System.Drawing.Size(972, 584);
             this.Controls.Add(this.侧边菜单栏panel);
             this.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -179,6 +201,7 @@ namespace 文献管理系统
         private System.Windows.Forms.Button 搜索按钮;
         private System.Windows.Forms.Button 工具按钮;
         private System.Windows.Forms.Panel 图标panel;
+        private System.Windows.Forms.Button button1;
     }
 }
 

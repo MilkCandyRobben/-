@@ -414,6 +414,7 @@ class PreprocessingUtils
 {
     public Dictionary<string, List<string>> authorIndexDic;
     public Dictionary<string, List<string>> keywordIndexDic;
+    public Dictionary<string, Dictionary<string, int>> yearKeywordDic;
     /// <summary>
     /// 文件格式化
     /// </summary>
@@ -563,22 +564,97 @@ class PreprocessingUtils
     /// <summary>
     /// 获取作者和关键字字典
     /// </summary>
-    public void getAuthorAndKeyword(string filepath)
+    //public void getAuthorAndKeyword(string filepath)
+    //{
+    //    XmlReaderSettings settings = new XmlReaderSettings();
+    //    settings.DtdProcessing = DtdProcessing.Parse;
+
+    //    XmlReader reader = XmlReader.Create(filepath, settings);
+    //    reader.MoveToContent();
+    //    string index = "";
+    //    int flag = 0;
+    //    authorIndexDic = new Dictionary<string, List<string>>();
+    //    keywordIndexDic = new Dictionary<string, List<string>>();
+    //    string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", "has", "not", "by", "into", "through", "off", "out", "from", "to" };
+    //    //FileStream fs_out = new FileStream("D:\\dataxml\\index.xml", FileMode.Append, FileAccess.Write);
+    //    //StreamWriter sw = new StreamWriter(fs_out);
+
+
+    //    while (reader.Read())
+    //    {
+    //        flag++;
+
+    //        if (flag % 1000000 == 0)
+    //            Console.WriteLine(flag.ToString());
+
+    //        if (reader.NodeType == XmlNodeType.Element)
+    //        {
+    //            if (reader.AttributeCount > 0)
+    //            {
+    //                if (reader.GetAttribute("index") != "" && reader.GetAttribute("index") != null)
+    //                    index = reader.GetAttribute("index");
+    //            }
+    //            if (reader.Name == "author")
+    //            {
+
+    //                string authorName = reader.ReadElementContentAsString();
+    //                if (authorIndexDic.ContainsKey(authorName))
+    //                {
+    //                    authorIndexDic[authorName].Add(index);
+    //                }
+    //                else
+    //                {
+    //                    authorIndexDic.Add(authorName, new List<string>());
+    //                    authorIndexDic[authorName].Add(index);
+    //                }
+
+    //            }
+    //            else if (reader.Name == "title")
+    //            {
+
+    //                string title = reader.ReadElementContentAsString().ToLower();
+    //                if (title == "home page")
+    //                    continue;
+    //                string[] arr = title.Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
+    //                foreach (string s in arr)
+    //                {
+    //                    if (s != "" && !((System.Collections.IList)ignore).Contains(s))
+    //                    {
+    //                        if (keywordIndexDic.ContainsKey(s))
+    //                        {
+    //                            keywordIndexDic[s].Add(index);
+    //                        }
+    //                        else
+    //                        {
+    //                            keywordIndexDic.Add(s, new List<string>());
+    //                            keywordIndexDic[s].Add(index);
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    Console.WriteLine("finish author dictionary");
+    //    Console.WriteLine("finish keyword dictionary");
+    //}
+
+    /// <summary>
+    /// 获取作者和关键字字典_改进版
+    /// </summary>
+    public void getAuthorAndKeyword(string filePath)
     {
         XmlReaderSettings settings = new XmlReaderSettings();
         settings.DtdProcessing = DtdProcessing.Parse;
 
-        XmlReader reader = XmlReader.Create(filepath, settings);
+        XmlReader reader = XmlReader.Create(filePath, settings);
         reader.MoveToContent();
         string index = "";
         int flag = 0;
         authorIndexDic = new Dictionary<string, List<string>>();
         keywordIndexDic = new Dictionary<string, List<string>>();
+        yearKeywordDic = new Dictionary<string, Dictionary<string, int>>();
         string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", "has", "not", "by", "into", "through", "off", "out", "from", "to" };
-        //FileStream fs_out = new FileStream("D:\\dataxml\\index.xml", FileMode.Append, FileAccess.Write);
-        //StreamWriter sw = new StreamWriter(fs_out);
-
-
+        string[] keywordArr = null;
         while (reader.Read())
         {
             flag++;
@@ -614,8 +690,8 @@ class PreprocessingUtils
                     string title = reader.ReadElementContentAsString().ToLower();
                     if (title == "home page")
                         continue;
-                    string[] arr = title.Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
-                    foreach (string s in arr)
+                    keywordArr = title.Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
+                    foreach (string s in keywordArr)
                     {
                         if (s != "" && !((System.Collections.IList)ignore).Contains(s))
                         {
@@ -631,11 +707,86 @@ class PreprocessingUtils
                         }
                     }
                 }
+                else if (reader.Name == "year")
+                {
+                    string year = reader.ReadElementContentAsString().ToLower();
+                    if (yearKeywordDic.ContainsKey(year))
+                    {
+                        foreach (string s in keywordArr)
+                        {
+                            if (s != "" && !((System.Collections.IList)ignore).Contains(s))
+                            {
+                                if (yearKeywordDic[year].ContainsKey(s))
+                                {
+                                    yearKeywordDic[year][s]++;
+                                }
+                                else
+                                {
+                                    yearKeywordDic[year].Add(s, 1);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        yearKeywordDic.Add(year, new Dictionary<string, int>());
+                        foreach (string s in keywordArr)
+                        {
+                            if (s != "" && !((System.Collections.IList)ignore).Contains(s))
+                            {
+                                if (yearKeywordDic[year].ContainsKey(s))
+                                {
+                                    yearKeywordDic[year][s]++;
+                                }
+                                else
+                                {
+                                    yearKeywordDic[year].Add(s, 1);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         Console.WriteLine("finish author dictionary");
         Console.WriteLine("finish keyword dictionary");
     }
+    /// <summary>
+    /// 查找每一年的热点词汇
+    /// </summary>
+    /// <param name="filePath"></param>
+    public void findHotspotTop10(string outputPath)
+    {
+        FileStream fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
+        StreamWriter sw = new StreamWriter(fs_out);
+        for (int i = 1900; i < 2022; i++)
+        {
+            if (yearKeywordDic.ContainsKey(i.ToString()))
+            {
+                MinHeap yearHeap = new MinHeap(10);
+                KeyValuePair<string, int>[] result = new KeyValuePair<string, int>[10];
+                foreach (KeyValuePair<string, int> kvp in yearKeywordDic[i.ToString()])
+                {
+                    yearHeap.insert(kvp);
+                }
+                for (int j = 9; j >= 0; j--)
+                {
+                    result[j] = yearHeap.heap[0];
+                    yearHeap.count--;
+                    yearHeap.heap[0] = yearHeap.heap[yearHeap.count];
+                    yearHeap.siftDown(0);
+                }
+                sw.Write(i.ToString() + "\n");
+                for (int j = 0; j < 10; j++)
+                {
+                    sw.Write(result[j].Key + "/" + result[j].Value.ToString() + "\n");
+                }
+            }
+        }
+        sw.Close();
+        Console.WriteLine("finish hotspot top10 index");
+    }
+
     /// <summary>
     /// 建立前100名作者索引
     /// </summary>
