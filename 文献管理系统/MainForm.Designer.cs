@@ -207,6 +207,7 @@ namespace 文献管理系统
             this.热点搜索button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.热点搜索button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.热点搜索button.UseVisualStyleBackColor = true;
+            this.热点搜索button.Click += new System.EventHandler(this.热点搜索button_Click);
             // 
             // button2
             // 

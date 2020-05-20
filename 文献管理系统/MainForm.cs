@@ -109,5 +109,10 @@ namespace 文献管理系统
             }
 
         }
+
+        private void 热点搜索button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("D:\\dataxml\\Hotspot.txt");
+        }
     }
 }
