@@ -32,8 +32,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -70,19 +70,11 @@
             this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 92);
+            this.panel3.MaximumSize = new System.Drawing.Size(382, 75);
+            this.panel3.MinimumSize = new System.Drawing.Size(382, 75);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(382, 75);
             this.panel3.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(29, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "搜该作者相关文章";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -94,6 +86,16 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(29, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(152, 32);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "搜该作者相关文章";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // 作者姓名窗口
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -101,6 +103,8 @@
             this.ClientSize = new System.Drawing.Size(382, 153);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
+            this.MaximumSize = new System.Drawing.Size(400, 200);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "作者姓名窗口";
             this.Text = "作者姓名窗口";
             this.Load += new System.EventHandler(this.作者姓名窗口_Load);

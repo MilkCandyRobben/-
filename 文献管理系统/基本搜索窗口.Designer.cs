@@ -120,6 +120,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
+            this.MaximumSize = new System.Drawing.Size(400, 200);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "基本搜索窗口";
             this.Text = "基本搜索窗口";
             this.Load += new System.EventHandler(this.基本搜索窗口_Load);
