@@ -36,23 +36,29 @@ namespace 文献管理系统
             this.搜索按钮 = new System.Windows.Forms.Button();
             this.工具按钮 = new System.Windows.Forms.Button();
             this.图标panel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.拓展功能button = new System.Windows.Forms.Button();
+            this.子菜单panel2 = new System.Windows.Forms.Panel();
+            this.热点搜索button = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.侧边菜单栏panel.SuspendLayout();
             this.子菜单panel.SuspendLayout();
+            this.子菜单panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // 侧边菜单栏panel
             // 
             this.侧边菜单栏panel.AutoScroll = true;
             this.侧边菜单栏panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            this.侧边菜单栏panel.Controls.Add(this.button1);
+            this.侧边菜单栏panel.Controls.Add(this.子菜单panel2);
+            this.侧边菜单栏panel.Controls.Add(this.拓展功能button);
             this.侧边菜单栏panel.Controls.Add(this.子菜单panel);
             this.侧边菜单栏panel.Controls.Add(this.工具按钮);
             this.侧边菜单栏panel.Controls.Add(this.图标panel);
             this.侧边菜单栏panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.侧边菜单栏panel.Location = new System.Drawing.Point(0, 0);
             this.侧边菜单栏panel.Name = "侧边菜单栏panel";
-            this.侧边菜单栏panel.Size = new System.Drawing.Size(250, 584);
+            this.侧边菜单栏panel.Size = new System.Drawing.Size(250, 553);
             this.侧边菜单栏panel.TabIndex = 0;
             // 
             // 子菜单panel
@@ -153,35 +159,101 @@ namespace 文献管理系统
             this.图标panel.Size = new System.Drawing.Size(250, 100);
             this.图标panel.TabIndex = 0;
             // 
-            // button1
+            // 拓展功能button
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 266);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(250, 40);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "热点统计";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.拓展功能button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.拓展功能button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.拓展功能button.FlatAppearance.BorderSize = 0;
+            this.拓展功能button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.拓展功能button.ForeColor = System.Drawing.Color.Gainsboro;
+            this.拓展功能button.Image = global::文献管理系统.Properties.Resources.三角下标left;
+            this.拓展功能button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.拓展功能button.Location = new System.Drawing.Point(0, 266);
+            this.拓展功能button.Name = "拓展功能button";
+            this.拓展功能button.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.拓展功能button.Size = new System.Drawing.Size(250, 45);
+            this.拓展功能button.TabIndex = 3;
+            this.拓展功能button.Text = "拓展功能";
+            this.拓展功能button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.拓展功能button.UseVisualStyleBackColor = true;
+            this.拓展功能button.Click += new System.EventHandler(this.拓展功能button_Click);
+            // 
+            // 子菜单panel2
+            // 
+            this.子菜单panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.子菜单panel2.Controls.Add(this.button2);
+            this.子菜单panel2.Controls.Add(this.button3);
+            this.子菜单panel2.Controls.Add(this.热点搜索button);
+            this.子菜单panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.子菜单panel2.Location = new System.Drawing.Point(0, 311);
+            this.子菜单panel2.Name = "子菜单panel2";
+            this.子菜单panel2.Size = new System.Drawing.Size(250, 121);
+            this.子菜单panel2.TabIndex = 4;
+            // 
+            // 热点搜索button
+            // 
+            this.热点搜索button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.热点搜索button.FlatAppearance.BorderSize = 0;
+            this.热点搜索button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.热点搜索button.ForeColor = System.Drawing.Color.LightGray;
+            this.热点搜索button.Image = ((System.Drawing.Image)(resources.GetObject("热点搜索button.Image")));
+            this.热点搜索button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.热点搜索button.Location = new System.Drawing.Point(0, 0);
+            this.热点搜索button.Name = "热点搜索button";
+            this.热点搜索button.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.热点搜索button.Size = new System.Drawing.Size(250, 40);
+            this.热点搜索button.TabIndex = 2;
+            this.热点搜索button.Text = "热点搜索";
+            this.热点搜索button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.热点搜索button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.热点搜索button.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.LightGray;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(0, 80);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(250, 40);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "待定";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.LightGray;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(0, 40);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(250, 40);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "待定";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 584);
+            this.ClientSize = new System.Drawing.Size(932, 553);
             this.Controls.Add(this.侧边菜单栏panel);
             this.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.MaximumSize = new System.Drawing.Size(950, 600);
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -189,6 +261,7 @@ namespace 文献管理系统
             this.Load += new System.EventHandler(this.Form1_Load);
             this.侧边菜单栏panel.ResumeLayout(false);
             this.子菜单panel.ResumeLayout(false);
+            this.子菜单panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -202,7 +275,11 @@ namespace 文献管理系统
         private System.Windows.Forms.Button 搜索按钮;
         private System.Windows.Forms.Button 工具按钮;
         private System.Windows.Forms.Panel 图标panel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button 拓展功能button;
+        private System.Windows.Forms.Panel 子菜单panel2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button 热点搜索button;
     }
 }
 

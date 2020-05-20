@@ -20,6 +20,7 @@ namespace 文献管理系统
         private void customizeDesign()
         {
             子菜单panel.Visible = false;
+            子菜单panel2.Visible = false;
 
         }
         private void hideSubMenu()
@@ -28,10 +29,14 @@ namespace 文献管理系统
             {
                 子菜单panel.Visible = false;
             }
+            if (子菜单panel2.Visible == true)
+            {
+                子菜单panel2.Visible = false;
+            }
         }
         private void showSubMenu(Panel subMenu)
         {
-            if (子菜单panel.Visible == false)
+            if (subMenu.Visible == false)
             {
                // hideSubMenu();
                 subMenu.Visible = true;
@@ -45,6 +50,7 @@ namespace 文献管理系统
 
         }
          bool a = true;
+        bool b = true;
         private void 工具按钮_Click(object sender, EventArgs e)
         {
             showSubMenu(子菜单panel);
@@ -87,9 +93,21 @@ namespace 文献管理系统
             hideSubMenu();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void 拓展功能button_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("D:\\dataxml\\Hotspot.txt");
+            showSubMenu(子菜单panel2);
+
+            if (b == true)
+            {
+                拓展功能button.Image = global::文献管理系统.Properties.Resources.三角下标down;
+                b = false;
+            }
+            else
+            {
+                拓展功能button.Image = global::文献管理系统.Properties.Resources.三角下标left;
+                b = true;
+            }
+
         }
     }
 }
