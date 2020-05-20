@@ -41,6 +41,9 @@ namespace 文献管理系统
                     PreprocessingUtils utils = new PreprocessingUtils();
                     utils.fileFormatting("d:\\dataxml\\dblp.xml", "d:\\dataxml\\dblp_index.xml");
                     utils.getAuthorAndKeyword("d:\\dataxml\\dblp_index.xml");
+
+                    utils.findHotspotTop10("d:\\dataxml\\Hotspot.txt");
+
                     utils.findTop100("d:\\dataxml\\top100.txt");
                     utils.createAuthorBTree("d:\\dataxml\\AuthorBTree.txt");
                     utils.createKeywordBTree("d:\\dataxml\\KeywordBTree.txt");

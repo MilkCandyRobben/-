@@ -26,5 +26,22 @@ namespace 文献管理系统
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string TitleName = this.TitleBox.Text;
+
+            Search search_title = new Search();
+            search_title.InitialKeywordBTreeLines("D:\\dataxml\\KeywordBTree.txt");
+            string[] result = search_title.SearchTitle(TitleName);
+
+            SearchByIndex_xml content_title = new SearchByIndex_xml();
+            content_title.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result_title.txt");
+
+            System.Diagnostics.Process.Start("D:\\dataxml\\result\\result_title.txt");
+
+            search_title.DeleteKeywordBTreeLines();
+            result = null;
+        }
     }
 }
