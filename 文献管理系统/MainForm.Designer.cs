@@ -162,6 +162,7 @@ namespace 文献管理系统
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "文献管理系统";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.侧边菜单栏panel.ResumeLayout(false);
