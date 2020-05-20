@@ -26,5 +26,10 @@ namespace 文献管理系统
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        private void pictureBox_Opening_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
