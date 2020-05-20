@@ -415,6 +415,9 @@ class PreprocessingUtils
     public Dictionary<string, List<string>> authorIndexDic;
     public Dictionary<string, List<string>> keywordIndexDic;
     public Dictionary<string, Dictionary<string, int>> yearKeywordDic;
+
+    public delegate void ListenerHandler();
+    public event ListenerHandler Listener = null;
     /// <summary>
     /// 文件格式化
     /// </summary>
@@ -553,7 +556,13 @@ class PreprocessingUtils
             temp.Replace(@"<tt>", "");
             temp.Replace(@"</tt>", "");
             sw.WriteLine(temp);
-
+            if (i % 1000000 == 0)
+            {
+                if (Listener != null)//确定事件已被订阅，也就是已被注册
+                {
+                    Listener();//触发事件
+                }
+            }
         } while (true);
 
         Console.WriteLine("读取成功");
@@ -660,7 +669,13 @@ class PreprocessingUtils
             flag++;
 
             if (flag % 1000000 == 0)
+            {
                 Console.WriteLine(flag.ToString());
+                if (Listener != null)//确定事件已被订阅，也就是已被注册
+                {
+                    Listener();//触发事件
+                }
+            }
 
             if (reader.NodeType == XmlNodeType.Element)
             {
@@ -830,7 +845,13 @@ class PreprocessingUtils
             //if (i > 40)
             //    break;
             if (i % 10000 == 0)
+            {
                 Console.WriteLine(i.ToString());
+                if (Listener != null)//确定事件已被订阅，也就是已被注册
+                {
+                    Listener();//触发事件
+                }
+            }
         }
         Console.WriteLine("finish create Btree");
         //bTree.PrintByKey();
