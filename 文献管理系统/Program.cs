@@ -19,38 +19,9 @@ namespace 文献管理系统
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainForm());
             OpeningForm frm = new OpeningForm();
-            
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                
-                FileStream fs_out_demo = new FileStream("d:\\dataxml\\start.txt", FileMode.Append, FileAccess.Write);
-                fs_out_demo.Close();
-                FileStream fr_out = new FileStream("d:\\dataxml\\start.txt", FileMode.Open, FileAccess.Read);
-                StreamReader sr = new StreamReader(fr_out);
 
-                if (sr.ReadLine() == null)
-                {
-                    fr_out.Close();
-                    FileStream fs_out = new FileStream("d:\\dataxml\\start.txt", FileMode.Append, FileAccess.Write);
-                    StreamWriter sw = new StreamWriter(fs_out);
-                    sw.Write("1");
-
-                    sr.Close();
-                    sw.Close();
-                    fs_out.Close();
-                    PreprocessingUtils utils = new PreprocessingUtils();
-                    utils.fileFormatting("d:\\dataxml\\dblp.xml", "d:\\dataxml\\dblp_index.xml");
-                    utils.getAuthorAndKeyword("d:\\dataxml\\dblp_index.xml");
-
-                    utils.findHotspotTop10("d:\\dataxml\\Hotspot.txt");
-
-                    utils.findTop100("d:\\dataxml\\top100.txt");
-                    utils.createAuthorBTree("d:\\dataxml\\AuthorBTree.txt");
-                    utils.createKeywordBTree("d:\\dataxml\\KeywordBTree.txt");
-                    MessageBox.Show("加载完成");
-                    
-                }
-                
                 Application.Run(new MainForm());
             }
 
