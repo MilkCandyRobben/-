@@ -47,6 +47,7 @@ namespace 文献管理系统
             this.pictureBox_Opening.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_Opening.TabIndex = 0;
             this.pictureBox_Opening.TabStop = false;
+            this.pictureBox_Opening.Click += new System.EventHandler(this.pictureBox_Opening_Click);
             // 
             // panelProgressbarContainer
             // 
@@ -69,8 +70,7 @@ namespace 文献管理系统
             // timerProgressbar
             // 
             this.timerProgressbar.Enabled = true;
-            this.timerProgressbar.Interval = 30;
-            this.timerProgressbar.Tick += new System.EventHandler(this.timerProgressbar_Tick);
+            this.timerProgressbar.Interval = 1000;
             // 
             // OpeningForm
             // 
@@ -81,7 +81,6 @@ namespace 文献管理系统
             this.Controls.Add(this.pictureBox_Opening);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OpeningForm";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpeningForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Opening)).EndInit();
