@@ -93,9 +93,11 @@ namespace 文献管理系统
                 this.DialogResult = DialogResult.OK;
             }
         }
+
         private void setDialogResult()
         {
             this.DialogResult = DialogResult.OK;
+
         }
     }
 }
