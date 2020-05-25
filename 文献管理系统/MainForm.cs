@@ -89,7 +89,8 @@ namespace 文献管理系统
 
         private void button3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("../../../Resources/render.html");
+            System.Diagnostics.Process.Start("D:\\dataxml\\top100.txt");
+            System.Diagnostics.Process.Start("D:\\dataxml\\render.html");
             hideSubMenu();
         }
 
