@@ -573,79 +573,7 @@ class PreprocessingUtils
     /// <summary>
     /// 获取作者和关键字字典
     /// </summary>
-    //public void getAuthorAndKeyword(string filepath)
-    //{
-    //    XmlReaderSettings settings = new XmlReaderSettings();
-    //    settings.DtdProcessing = DtdProcessing.Parse;
-
-    //    XmlReader reader = XmlReader.Create(filepath, settings);
-    //    reader.MoveToContent();
-    //    string index = "";
-    //    int flag = 0;
-    //    authorIndexDic = new Dictionary<string, List<string>>();
-    //    keywordIndexDic = new Dictionary<string, List<string>>();
-    //    string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", "has", "not", "by", "into", "through", "off", "out", "from", "to" };
-    //    //FileStream fs_out = new FileStream("D:\\dataxml\\index.xml", FileMode.Append, FileAccess.Write);
-    //    //StreamWriter sw = new StreamWriter(fs_out);
-
-
-    //    while (reader.Read())
-    //    {
-    //        flag++;
-
-    //        if (flag % 1000000 == 0)
-    //            Console.WriteLine(flag.ToString());
-
-    //        if (reader.NodeType == XmlNodeType.Element)
-    //        {
-    //            if (reader.AttributeCount > 0)
-    //            {
-    //                if (reader.GetAttribute("index") != "" && reader.GetAttribute("index") != null)
-    //                    index = reader.GetAttribute("index");
-    //            }
-    //            if (reader.Name == "author")
-    //            {
-
-    //                string authorName = reader.ReadElementContentAsString();
-    //                if (authorIndexDic.ContainsKey(authorName))
-    //                {
-    //                    authorIndexDic[authorName].Add(index);
-    //                }
-    //                else
-    //                {
-    //                    authorIndexDic.Add(authorName, new List<string>());
-    //                    authorIndexDic[authorName].Add(index);
-    //                }
-
-    //            }
-    //            else if (reader.Name == "title")
-    //            {
-
-    //                string title = reader.ReadElementContentAsString().ToLower();
-    //                if (title == "home page")
-    //                    continue;
-    //                string[] arr = title.Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
-    //                foreach (string s in arr)
-    //                {
-    //                    if (s != "" && !((System.Collections.IList)ignore).Contains(s))
-    //                    {
-    //                        if (keywordIndexDic.ContainsKey(s))
-    //                        {
-    //                            keywordIndexDic[s].Add(index);
-    //                        }
-    //                        else
-    //                        {
-    //                            keywordIndexDic.Add(s, new List<string>());
-    //                            keywordIndexDic[s].Add(index);
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //    Console.WriteLine("finish author dictionary");
-    //    Console.WriteLine("finish keyword dictionary");
-    //}
+    
 
     /// <summary>
     /// 获取作者和关键字字典_改进版
@@ -1001,19 +929,7 @@ class Search
         }
 
     }
-    //public string[] SearchTitle(string title)
-    //{
-    //    string[] keywords = title.ToLower().Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
-    //    if (keywords.Length == 0)
-    //        return null;
-    //    List<string> result = SearchKeyword(keywords[0], 0).ToList<string>();
-    //    for (int i = 1; i < keywords.Length; i++)
-    //    {
-    //        List<string> temp = SearchKeyword(keywords[i], 0).ToList<string>();
-    //        result = result.Intersect(temp).ToList();
-    //    }
-    //    return result.ToArray<string>();
-    //}
+   
     public string[] SearchTitle(string title)
     {
         string[] keywords = title.ToLower().Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
@@ -1043,58 +959,3 @@ class Search
     }
 }
 
-//namespace ConsoleApp3
-//{
-//    class Program
-//    {
-//        static void Main(string[] args)
-//        {
-
-
-
-
-//            //Console.WriteLine("输出排序后键值");
-
-
-
-//            //PreprocessingUtils utils = new PreprocessingUtils();
-//            //utils.getAuthorAndKeyword();
-//            //utils.findTop100("d:\\dataxml\\top100.txt");
-//            //utils.createAuthorBTree("E:\\Data Structure Final\\AuthorBTree.txt");
-//            //utils.createKeywordBTree("E:\\Data Structure Final\\KeywordBTree.txt");
-
-//            FileStream fs_out = new FileStream(@"D:\dataxml\zhiguancheng.txt", FileMode.Append, FileAccess.Write);
-//            StreamWriter sw = new StreamWriter(fs_out);
-
-//            Search search = new Search();
-//            search.InitialAuthorBTreeLines("D:\\dataxml\\authorBtreeIndex.txt");
-//            string[] result = search.SearchAuthor("H. Vincent Poor", 0);
-              
-//            DateTime beforDT = System.DateTime.Now;
-
-//            DateTime afterDT = System.DateTime.Now;
-//            TimeSpan ts = afterDT.Subtract(beforDT)
-;
-//            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
-//            Console.WriteLine("Paul Kocher");
-//            for (int i = 0; i < result.Length; i++)
-//            {
-//                Console.WriteLine("\"" + result[i] + "\"");
-//                sw.Write("\"" + result[i] + "\",\n");
-
-//            }
-//            sw.Close();
-//            //search.InitialKeywordBTreeLines("D:\\dataxml\\keywordBtreeIndex.txt");
-//            //DateTime beforDT = System.DateTime.Now;
-//            //string[] result = search.SearchTitle("feature graphs");
-//            //DateTime afterDT = System.DateTime.Now;
-//            //TimeSpan ts = afterDT.Subtract(beforDT);
-//            //Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
-//            //Console.WriteLine("feature graph");
-//            //for (int i = 0; i < result.Length; i++)
-//            //{
-//            //    Console.WriteLine(result[i]);
-//            //}
-//        }
-//    }
-//}
