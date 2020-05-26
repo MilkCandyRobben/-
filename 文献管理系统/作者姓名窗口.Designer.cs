@@ -107,6 +107,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "作者姓名窗口";
             this.Text = "作者姓名窗口";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.作者姓名窗口_FormClosing);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);

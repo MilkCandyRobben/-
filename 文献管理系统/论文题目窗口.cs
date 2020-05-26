@@ -36,14 +36,23 @@ namespace 文献管理系统
             Search search_title = new Search();
             search_title.InitialKeywordBTreeLines("D:\\dataxml\\KeywordBTree.txt");
             string[] result = search_title.SearchTitle(TitleName);
+            if (result != null)
+            {
+                SearchByIndex_xml content_title = new SearchByIndex_xml();
+                content_title.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result_title.txt");
+                System.Diagnostics.Process.Start("D:\\dataxml\\result\\result_title.txt");
+                search_title.DeleteKeywordBTreeLines();
+                result = null;
 
-            SearchByIndex_xml content_title = new SearchByIndex_xml();
-            content_title.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result_title.txt");
-
-            System.Diagnostics.Process.Start("D:\\dataxml\\result\\result_title.txt");
-
-            search_title.DeleteKeywordBTreeLines();
-            result = null;
+            }
+            else
+            {
+                Console.WriteLine();
+                错误窗口 form1 = new 错误窗口();
+                form1.Show();
+            }
+            
+            
             form.Close();
         }
     }

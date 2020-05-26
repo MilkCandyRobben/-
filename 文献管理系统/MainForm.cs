@@ -76,6 +76,8 @@ namespace 文献管理系统
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
             hideSubMenu();
+            工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
+            a = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -84,6 +86,8 @@ namespace 文献管理系统
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
             hideSubMenu();
+            工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
+            a = true;
 
         }
 
@@ -95,6 +99,8 @@ namespace 文献管理系统
             System.Diagnostics.Process.Start("D:\\dataxml\\render.html");
             hideSubMenu();
             form4.Close();
+            工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
+            a = true;
         }
 
         private void 拓展功能button_Click(object sender, EventArgs e)
@@ -120,6 +126,8 @@ namespace 文献管理系统
             form3.Show();
             System.Diagnostics.Process.Start("D:\\dataxml\\Hotspot.txt");
             hideSubMenu();
+            拓展功能button.Image = global::文献管理系统.Properties.Resources.三角下标left;
+            b = true;
             form3.Close();
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace 文献管理系统
 {
-    partial class 加载窗口
+    partial class 错误窗口
     {
         /// <summary>
         /// Required designer variable.
@@ -28,39 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // label1
             // 
-            this.pictureBox1.Image = global::文献管理系统.Properties.Resources.loading;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(283, 151);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(51, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "搜索不到相关信息！";
             // 
-            // 加载窗口
+            // 错误窗口
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 153);
-            this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximumSize = new System.Drawing.Size(300, 200);
-            this.MinimumSize = new System.Drawing.Size(300, 200);
-            this.Name = "加载窗口";
+            this.ClientSize = new System.Drawing.Size(232, 153);
+            this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(250, 200);
+            this.MinimumSize = new System.Drawing.Size(250, 200);
+            this.Name = "错误窗口";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "加载窗口";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "错误窗口";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

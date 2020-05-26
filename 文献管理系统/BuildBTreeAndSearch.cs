@@ -1016,11 +1016,17 @@ class Search
     //}
     public string[] SearchTitle(string title)
     {
+
         string[] keywords = title.ToLower().Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
         string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", "has", "not", "by", "into", "through", "off", "out", "from", "to" };
         if (keywords.Length == 0)
             return null;
-        List<string> result = SearchKeyword(keywords[0], 0).ToList<string>();
+        string[] returnList = SearchKeyword(keywords[0], 0);
+        if(returnList==null)
+        {
+            return null;
+        }
+        List<string> result =returnList.ToList<string>();
         if (result == null)
             return null;
         for (int i = 1; i < keywords.Length; i++)

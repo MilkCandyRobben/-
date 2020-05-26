@@ -50,7 +50,8 @@ namespace 文献管理系统
             //{
             //    Infomation = new List<string>();
             //}
-
+            if (indexGroup == null)
+                return false;
             foreach (string index in indexGroup) {
                 while (reader.Read())
                 {
@@ -181,6 +182,10 @@ namespace 文献管理系统
 
             author_set = new List<string>();
             reader.MoveToContent();
+            if(indexGroup==null)
+            {
+                return false;
+            }
             foreach (string index in indexGroup) 
             {
                 while (reader.Read())

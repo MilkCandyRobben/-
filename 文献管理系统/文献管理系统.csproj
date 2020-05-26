@@ -94,6 +94,12 @@
     <Compile Include="论文题目窗口.Designer.cs">
       <DependentUpon>论文题目窗口.cs</DependentUpon>
     </Compile>
+    <Compile Include="错误窗口.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="错误窗口.Designer.cs">
+      <DependentUpon>错误窗口.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="论文题目窗口.resx">
       <DependentUpon>论文题目窗口.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="错误窗口.resx">
+      <DependentUpon>错误窗口.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -176,6 +185,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close_window_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\loading.gif" />
+    <None Include="Resources\loading1.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
