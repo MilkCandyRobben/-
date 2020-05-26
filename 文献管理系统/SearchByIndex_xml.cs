@@ -14,14 +14,6 @@ namespace 文献管理系统
 {
     class SearchByIndex_xml
     {
-        
-
-        //public List<string> Infomation { set; get; }//author Tom+":"
-        //public void clearInfo()
-        //{
-        //    this.Infomation.Clear();
-        //}
-
         public FileStream fs_out;
         public StreamWriter sw;
         public List<string> author_set { set; get; }
@@ -30,17 +22,10 @@ namespace 文献管理系统
         {
             fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
             sw = new StreamWriter(fs_out);
-            //XmlReaderSettings解决dtd约束权限问题 加入这三句就能够解决
-            //ValidationCallBack记得要Override
-            //XmlReaderSettings settings = new XmlReaderSettings();
-            //settings.ProhibitDtd = false;
-            //settings.ValidationType = ValidationType.DTD;
-            //settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
-
-
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.DtdProcessing = DtdProcessing.Parse;
             XmlReader reader = XmlReader.Create(filePath, settings);
+
 
             //XmlReader reader = XmlReader.Create(filepath, settings);
 
@@ -52,6 +37,8 @@ namespace 文献管理系统
             //}
             if (indexGroup == null)
                 return false;
+
+
             foreach (string index in indexGroup) {
                 while (reader.Read())
                 {
@@ -166,8 +153,6 @@ namespace 文献管理系统
             reader.Close();
             sw.Close();
             fs_out.Close();
-            
-            // return Infomation;
             return true;
         }
 
@@ -176,10 +161,8 @@ namespace 文献管理系统
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.DtdProcessing = DtdProcessing.Parse;
             XmlReader reader = XmlReader.Create(filepath, settings);
-
             fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
             sw = new StreamWriter(fs_out);
-
             author_set = new List<string>();
             reader.MoveToContent();
             if(indexGroup==null)
