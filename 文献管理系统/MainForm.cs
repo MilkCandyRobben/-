@@ -92,6 +92,7 @@ namespace 文献管理系统
             加载窗口 form4 = new 加载窗口();
             form4.Show();
             System.Diagnostics.Process.Start("D:\\dataxml\\top100.txt");
+            System.Diagnostics.Process.Start("D:\\dataxml\\render.html");
             hideSubMenu();
             form4.Close();
         }

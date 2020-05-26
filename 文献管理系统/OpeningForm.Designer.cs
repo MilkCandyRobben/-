@@ -47,7 +47,7 @@ namespace 文献管理系统
             this.pictureBox_Opening.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_Opening.TabIndex = 0;
             this.pictureBox_Opening.TabStop = false;
-            this.pictureBox_Opening.Click += new System.EventHandler(this.pictureBox_Opening_Click);
+            
             // 
             // panelProgressbarContainer
             // 
