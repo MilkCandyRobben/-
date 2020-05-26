@@ -17,16 +17,12 @@ namespace 文献管理系统
             InitializeComponent();
         }
 
-        private void 作者姓名窗口_Load(object sender, EventArgs e)
-        {
-
-
-
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
+            加载窗口 form = new 加载窗口();
+            form.Show();
             string AuthorName = this.textBox1.Text;
             Search search = new Search();
             search.InitialAuthorBTreeLines("D:\\dataxml\\AuthorBTree.txt");
@@ -37,10 +33,13 @@ namespace 文献管理系统
 
             search.DeleteAuthorBTreeLines();
             result = null;
+            form.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            加载窗口 form1 = new 加载窗口();
+            form1.Show();
             string AuthorName = this.textBox1.Text;
             Search search = new Search();
             search.InitialAuthorBTreeLines("D:\\dataxml\\AuthorBTree.txt");
@@ -51,6 +50,7 @@ namespace 文献管理系统
 
             search.DeleteAuthorBTreeLines();
             result = null;
+            form1.Close();
         }
     }
 }

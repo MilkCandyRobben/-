@@ -89,8 +89,11 @@ namespace 文献管理系统
 
         private void button3_Click(object sender, EventArgs e)
         {
+            加载窗口 form4 = new 加载窗口();
+            form4.Show();
             System.Diagnostics.Process.Start("D:\\dataxml\\top100.txt");
             hideSubMenu();
+            form4.Close();
         }
 
         private void 拓展功能button_Click(object sender, EventArgs e)
@@ -112,7 +115,11 @@ namespace 文献管理系统
 
         private void 热点搜索button_Click(object sender, EventArgs e)
         {
+            加载窗口 form3 = new 加载窗口();
+            form3.Show();
             System.Diagnostics.Process.Start("D:\\dataxml\\Hotspot.txt");
+            hideSubMenu();
+            form3.Close();
         }
     }
 }
