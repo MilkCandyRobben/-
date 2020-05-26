@@ -76,6 +76,12 @@
     <Compile Include="作者姓名窗口.Designer.cs">
       <DependentUpon>作者姓名窗口.cs</DependentUpon>
     </Compile>
+    <Compile Include="加载窗口.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="加载窗口.Designer.cs">
+      <DependentUpon>加载窗口.cs</DependentUpon>
+    </Compile>
     <Compile Include="基本搜索窗口.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="作者姓名窗口.resx">
       <DependentUpon>作者姓名窗口.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="加载窗口.resx">
+      <DependentUpon>加载窗口.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基本搜索窗口.resx">
       <DependentUpon>基本搜索窗口.cs</DependentUpon>

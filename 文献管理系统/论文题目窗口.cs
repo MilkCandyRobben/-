@@ -29,6 +29,8 @@ namespace 文献管理系统
 
         private void button1_Click(object sender, EventArgs e)
         {
+            加载窗口 form = new 加载窗口();
+            form.Show();
             string TitleName = this.TitleBox.Text;
 
             Search search_title = new Search();
@@ -42,6 +44,7 @@ namespace 文献管理系统
 
             search_title.DeleteKeywordBTreeLines();
             result = null;
+            form.Close();
         }
     }
 }
