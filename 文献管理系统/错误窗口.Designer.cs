@@ -34,6 +34,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(51, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(142, 15);
@@ -44,6 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.ClientSize = new System.Drawing.Size(232, 153);
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(250, 200);

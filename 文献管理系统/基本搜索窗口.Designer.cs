@@ -98,27 +98,30 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 97);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(382, 56);
+            this.panel3.Size = new System.Drawing.Size(382, 62);
             this.panel3.TabIndex = 2;
             // 
             // 确定按钮
             // 
+            this.确定按钮.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.确定按钮.Location = new System.Drawing.Point(151, 18);
             this.确定按钮.Name = "确定按钮";
             this.确定按钮.Size = new System.Drawing.Size(75, 30);
             this.确定按钮.TabIndex = 0;
             this.确定按钮.Text = "确定";
-            this.确定按钮.UseVisualStyleBackColor = true;
+            this.确定按钮.UseVisualStyleBackColor = false;
             this.确定按钮.Click += new System.EventHandler(this.确定按钮_Click);
             // 
             // 基本搜索窗口
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.ClientSize = new System.Drawing.Size(382, 153);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.IsMdiContainer = true;
             this.MaximumSize = new System.Drawing.Size(400, 200);
             this.MinimumSize = new System.Drawing.Size(400, 200);

@@ -78,31 +78,35 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.button2.Location = new System.Drawing.Point(206, 17);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(147, 32);
             this.button2.TabIndex = 1;
             this.button2.Text = "搜该作者合作关系";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.button1.Location = new System.Drawing.Point(29, 17);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "搜该作者相关文章";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // 作者姓名窗口
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.ClientSize = new System.Drawing.Size(382, 153);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.MaximumSize = new System.Drawing.Size(400, 200);
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "作者姓名窗口";
