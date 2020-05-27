@@ -42,6 +42,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(17)))), ((int)(((byte)(31)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -61,6 +62,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(17)))), ((int)(((byte)(31)))));
             this.panel2.Controls.Add(this.radioButton2论文题目);
             this.panel2.Controls.Add(this.radioButton1作者姓名);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -94,6 +96,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(17)))), ((int)(((byte)(31)))));
             this.panel3.Controls.Add(this.确定按钮);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 97);
@@ -103,9 +106,11 @@
             // 
             // 确定按钮
             // 
-            this.确定按钮.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.确定按钮.BackColor = System.Drawing.SystemColors.Control;
+            this.确定按钮.ForeColor = System.Drawing.SystemColors.ControlText;
             this.确定按钮.Location = new System.Drawing.Point(151, 18);
             this.确定按钮.Name = "确定按钮";
+            this.确定按钮.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.确定按钮.Size = new System.Drawing.Size(75, 30);
             this.确定按钮.TabIndex = 0;
             this.确定按钮.Text = "确定";

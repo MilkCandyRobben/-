@@ -51,7 +51,7 @@ namespace 文献管理系统
             // 侧边菜单栏panel
             // 
             this.侧边菜单栏panel.AutoScroll = true;
-            this.侧边菜单栏panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.侧边菜单栏panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(17)))), ((int)(((byte)(31)))));
             this.侧边菜单栏panel.Controls.Add(this.子菜单panel2);
             this.侧边菜单栏panel.Controls.Add(this.拓展功能button);
             this.侧边菜单栏panel.Controls.Add(this.子菜单panel);
@@ -132,6 +132,7 @@ namespace 文献管理系统
             // 
             // 拓展功能button
             // 
+            this.拓展功能button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(17)))), ((int)(((byte)(31)))));
             this.拓展功能button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.拓展功能button.Dock = System.Windows.Forms.DockStyle.Top;
             this.拓展功能button.FlatAppearance.BorderSize = 0;
@@ -146,7 +147,7 @@ namespace 文献管理系统
             this.拓展功能button.TabIndex = 3;
             this.拓展功能button.Text = "拓展功能";
             this.拓展功能button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.拓展功能button.UseVisualStyleBackColor = true;
+            this.拓展功能button.UseVisualStyleBackColor = false;
             this.拓展功能button.Click += new System.EventHandler(this.拓展功能button_Click);
             // 
             // 子菜单panel
@@ -220,6 +221,7 @@ namespace 文献管理系统
             // 
             // 工具按钮
             // 
+            this.工具按钮.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(17)))), ((int)(((byte)(31)))));
             this.工具按钮.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.工具按钮.Dock = System.Windows.Forms.DockStyle.Top;
             this.工具按钮.FlatAppearance.BorderSize = 0;
@@ -234,11 +236,12 @@ namespace 文献管理系统
             this.工具按钮.TabIndex = 1;
             this.工具按钮.Text = "工具";
             this.工具按钮.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.工具按钮.UseVisualStyleBackColor = true;
+            this.工具按钮.UseVisualStyleBackColor = false;
             this.工具按钮.Click += new System.EventHandler(this.工具按钮_Click);
             // 
             // 图标panel
             // 
+            this.图标panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(17)))), ((int)(((byte)(31)))));
             this.图标panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("图标panel.BackgroundImage")));
             this.图标panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.图标panel.Dock = System.Windows.Forms.DockStyle.Top;

@@ -28,11 +28,14 @@ namespace 文献管理系统
             string[] result = search.SearchAuthor(AuthorName, 0);
             if (result != null)
             {
+                加载窗口 form = new 加载窗口();
+                form.Show();
             SearchByIndex_xml content = new SearchByIndex_xml();
             content.getInfomation(result, "D:\\dataxml\\dblp_index.xml", "D:\\dataxml\\result\\result_"+AuthorName+".txt");
             System.Diagnostics.Process.Start("D:\\dataxml\\result\\result_" + AuthorName + ".txt");
             //search.DeleteAuthorBTreeLines();
             result = null;
+                form.Close();
 
             }
             else
