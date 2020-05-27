@@ -590,7 +590,8 @@ class PreprocessingUtils
         authorIndexDic = new Dictionary<string, List<string>>();
         keywordIndexDic = new Dictionary<string, List<string>>();
         yearKeywordDic = new Dictionary<string, Dictionary<string, int>>();
-        string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", "has", "not", "by", "into", "through", "off", "out", "from", "to" };
+        string[] ignore = { "for", "and", "on", "the", "a", "of", "with", "an", "in", "at", "have", "is", "are", 
+            "has", "not", "by", "into", "through", "off", "out", "from", "to" };
         string[] keywordArr = null;
         while (reader.Read())
         {
@@ -633,7 +634,9 @@ class PreprocessingUtils
                     string title = reader.ReadElementContentAsString().ToLower();
                     if (title == "home page")
                         continue;
-                    keywordArr = title.Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"', '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
+                    keywordArr = title.Split(' ', '-', '_', ':', '\'', '(', ')', '.', ',', '+', '\\', '/', '?', '!', '"',
+                        '*', '|', '<', '>', '@', ';', '&', '*', '^', '†', '$', '=', '™', '²', '{', '}', '[', ']', '#', 
+                        '%', '°', '∘', '«', '®', 'ℝ', '″', '»', '~');
                     foreach (string s in keywordArr)
                     {
                         if (s != "" && !((System.Collections.IList)ignore).Contains(s))
