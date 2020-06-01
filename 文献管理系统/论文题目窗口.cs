@@ -12,9 +12,12 @@ namespace 文献管理系统
 {
     public partial class 论文题目窗口 : Form
     {
+        Search search_title;
         public 论文题目窗口()
         {
             InitializeComponent();
+            search_title = new Search();
+            search_title.InitialKeywordBTreeLines("D:\\dataxml\\KeywordBTree.txt");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -33,8 +36,6 @@ namespace 文献管理系统
             form.Show();
             string TitleName = this.TitleBox.Text;
 
-            Search search_title = new Search();
-            search_title.InitialKeywordBTreeLines("D:\\dataxml\\KeywordBTree.txt");
             string[] result = search_title.SearchTitle(TitleName);
             if (result != null)
             {

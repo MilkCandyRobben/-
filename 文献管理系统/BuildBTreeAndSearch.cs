@@ -94,7 +94,7 @@ public class BTreeNode
             waitSplitNode.keys[j + Consts.ChildMin] = new KeyValuePair<string, List<string>>(null, null);
         }
 
-        // 如果待分裂节点不是也只节点
+        // 如果待分裂节点不是叶子节点
         if (waitSplitNode.leaf == false)
         {
             for (var j = 0; j < Consts.ChildMin; j++)
