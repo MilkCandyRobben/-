@@ -886,6 +886,8 @@ class Search
     }
     public string[] SearchKeyword(string key, int line)
     {
+        if (key == null || key == "")
+            return null;
         int startLine = line;
         string[] temp1 = keywordBTreeLines[line].Split('/');
         int nodeRows = int.Parse(temp1[0]);

@@ -20,7 +20,7 @@ namespace 文献管理系统
         
         public bool getInfomation(string[] indexGroup,string filePath,string outputPath)
         {
-            fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
+            fs_out = new FileStream(outputPath, FileMode.Create, FileAccess.Write);
             sw = new StreamWriter(fs_out);
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.DtdProcessing = DtdProcessing.Parse;
@@ -73,7 +73,8 @@ namespace 文献管理系统
                                     while (reader.Read())
                                     {
                                         reader.MoveToContent();
-                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "year" || reader.Name == "series" || reader.Name == "publisher" || reader.Name == "isbn" || reader.Name == "ee"))
+                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "year" 
+                                            || reader.Name == "series" || reader.Name == "publisher" || reader.Name == "isbn" || reader.Name == "ee"))
                                         {
                                             sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
 
@@ -87,7 +88,9 @@ namespace 文献管理系统
                                     while (reader.Read())
                                     {
                                         reader.MoveToContent();
-                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" || reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
+                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" ||
+                                            reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" 
+                                            || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
                                         {
 
                                             sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
@@ -102,7 +105,10 @@ namespace 文献管理系统
                                     while (reader.Read())
                                     {
                                         reader.MoveToContent();
-                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" || reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
+                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" 
+                                            || reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" 
+                                            || reader.Name == "crossref" || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" 
+                                            || reader.Name == "month"))
                                         {
 
                                             sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
@@ -117,7 +123,10 @@ namespace 文献管理系统
                                     while (reader.Read())
                                     {
                                         reader.MoveToContent();
-                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "volume" || reader.Name == "editor" || reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" || reader.Name == "year" || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" || reader.Name == "ee" || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
+                                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "volume" || reader.Name == "editor" 
+                                            || reader.Name == "author" || reader.Name == "title" || reader.Name == "pages" || reader.Name == "year" 
+                                            || reader.Name == "booktitle" || reader.Name == "url" || reader.Name == "crossref" || reader.Name == "ee" 
+                                            || reader.Name == "cdrom" || reader.Name == "note" || reader.Name == "month"))
                                         {
 
                                             sw.Write(reader.Name + ":" + reader.ReadInnerXml() + '\n');
@@ -161,7 +170,7 @@ namespace 文献管理系统
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.DtdProcessing = DtdProcessing.Parse;
             XmlReader reader = XmlReader.Create(filepath, settings);
-            fs_out = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
+            fs_out = new FileStream(outputPath, FileMode.Create, FileAccess.Write);
             sw = new StreamWriter(fs_out);
             author_set = new List<string>();
             reader.MoveToContent();
