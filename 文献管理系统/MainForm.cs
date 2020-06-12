@@ -23,16 +23,15 @@ namespace 文献管理系统
             子菜单panel2.Visible = false;
 
         }
-        private void hideSubMenu()
+        private void hideSubMenu(Panel subMenu)
         {
-            if(子菜单panel.Visible ==true)
+            if (subMenu.Visible == false)
             {
-                子菜单panel.Visible = false;
+                // hideSubMenu();
+                subMenu.Visible = true;
             }
-            if (子菜单panel2.Visible == true)
-            {
-                子菜单panel2.Visible = false;
-            }
+            else
+                subMenu.Visible = false;
         }
         private void showSubMenu(Panel subMenu)
         {
@@ -65,9 +64,6 @@ namespace 文献管理系统
                 工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
                 a = true;
             }
-
-            
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,7 +71,7 @@ namespace 文献管理系统
             基本搜索窗口 form = new 基本搜索窗口();
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
-            hideSubMenu();
+            hideSubMenu(子菜单panel);
             工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
             a = true;
         }
@@ -85,7 +81,7 @@ namespace 文献管理系统
             作者姓名窗口 form = new 作者姓名窗口();
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
-            hideSubMenu();
+            hideSubMenu(子菜单panel);
             工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
             a = true;
 
@@ -97,7 +93,7 @@ namespace 文献管理系统
             form4.Show();
             System.Diagnostics.Process.Start("D:\\dataxml\\top100.txt");
             System.Diagnostics.Process.Start("D:\\dataxml\\render.html");
-            hideSubMenu();
+            hideSubMenu(子菜单panel);
             form4.Close();
             工具按钮.Image = global::文献管理系统.Properties.Resources.三角下标left;
             a = true;
@@ -106,7 +102,6 @@ namespace 文献管理系统
         private void 拓展功能button_Click(object sender, EventArgs e)
         {
             showSubMenu(子菜单panel2);
-
             if (b == true)
             {
                 拓展功能button.Image = global::文献管理系统.Properties.Resources.三角下标down;
@@ -125,7 +120,7 @@ namespace 文献管理系统
             加载窗口 form3 = new 加载窗口();
             form3.Show();
             System.Diagnostics.Process.Start("D:\\dataxml\\Hotspot.txt");
-            hideSubMenu();
+            hideSubMenu(子菜单panel2);
             拓展功能button.Image = global::文献管理系统.Properties.Resources.三角下标left;
             b = true;
             form3.Close();
